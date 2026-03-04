@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eeman1113 | Projects</title>
-    <!-- Tailwind CSS for rapid, clean styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Inter Font for a clean, modern aesthetic -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -15,529 +13,703 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
                     colors: {
                         black: '#050505',
-                        neutral: {
-                            800: '#262626',
-                            900: '#171717',
-                            950: '#0a0a0a',
-                        }
+                        neutral: { 800: '#262626', 900: '#171717', 950: '#0a0a0a' }
                     }
                 }
             }
         }
     </script>
     <style>
+        /* ── Color tokens ── */
+        :root {
+            --bg:           #050505;
+            --bg-card:      rgba(23,23,23,0.3);
+            --border:       #262626;
+            --border-hover: #52525b;
+            --text:         #ffffff;
+            --text-muted:   #a3a3a3;
+            --text-faint:   #525252;
+            --text-subtle:  #737373;
+            --input-bg:     rgba(23,23,23,0.5);
+            --scrollbar:    #262626;
+            --scrollbar-h:  #404040;
+            --footer-border:#171717;
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg:           #f8f8f7;
+                --bg-card:      rgba(255,255,255,0.8);
+                --border:       #e2e2e0;
+                --border-hover: #a1a1aa;
+                --text:         #0a0a0a;
+                --text-muted:   #52525b;
+                --text-faint:   #a1a1aa;
+                --text-subtle:  #71717a;
+                --input-bg:     rgba(255,255,255,0.7);
+                --scrollbar:    #d4d4d4;
+                --scrollbar-h:  #a3a3a3;
+                --footer-border:#e2e2e0;
+            }
+            /* Boost tag opacity slightly for light bg legibility */
+            .tag-multiagent { background: rgba(217,70,239,0.1);  border-color: rgba(217,70,239,0.4); color: #a21caf; }
+            .tag-agentic    { background: rgba(139,92,246,0.1);  border-color: rgba(139,92,246,0.4); color: #7c3aed; }
+            .tag-rag        { background: rgba(168,85,247,0.1);  border-color: rgba(168,85,247,0.4); color: #9333ea; }
+            .tag-llm        { background: rgba(99,102,241,0.1);  border-color: rgba(99,102,241,0.4); color: #4f46e5; }
+            .tag-genai      { background: rgba(16,185,129,0.1);  border-color: rgba(16,185,129,0.4); color: #059669; }
+            .tag-rl         { background: rgba(249,115,22,0.1);  border-color: rgba(249,115,22,0.4); color: #ea580c; }
+            .tag-deeplearn  { background: rgba(236,72,153,0.1);  border-color: rgba(236,72,153,0.4); color: #db2777; }
+            .tag-cv         { background: rgba(244,63,94,0.1);   border-color: rgba(244,63,94,0.4);  color: #e11d48; }
+            .tag-nlp        { background: rgba(202,138,4,0.1);   border-color: rgba(202,138,4,0.4);  color: #a16207; }
+            .tag-ml         { background: rgba(6,182,212,0.1);   border-color: rgba(6,182,212,0.4);  color: #0e7490; }
+            .tag-automation { background: rgba(20,184,166,0.1);  border-color: rgba(20,184,166,0.4); color: #0f766e; }
+            .tag-research   { background: rgba(100,116,139,0.1); border-color: rgba(100,116,139,0.4);color: #475569; }
+            .tag-audio      { background: rgba(202,138,4,0.1);   border-color: rgba(202,138,4,0.4);  color: #92400e; }
+            .tag-finance    { background: rgba(16,185,129,0.1);  border-color: rgba(16,185,129,0.4); color: #065f46; }
+            .tag-gamedev    { background: rgba(245,158,11,0.1);  border-color: rgba(245,158,11,0.4); color: #b45309; }
+            .tag-webdev     { background: rgba(59,130,246,0.1);  border-color: rgba(59,130,246,0.4); color: #1d4ed8; }
+            .tag-data       { background: rgba(14,165,233,0.1);  border-color: rgba(14,165,233,0.4); color: #0369a1; }
+            .tag-rust       { background: rgba(239,68,68,0.1);   border-color: rgba(239,68,68,0.4);  color: #dc2626; }
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #050505;
-            color: #ffffff;
+            background-color: var(--bg);
+            color: var(--text);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
-        
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #050505;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #262626;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #404040;
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--scrollbar); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-h); }
 
-        /* Subtle glow effect on hover */
         .project-card {
             transition: all 0.3s ease;
+            background: var(--bg-card) !important;
+            border-color: var(--border) !important;
         }
         .project-card:hover {
             transform: translateY(-2px);
-            border-color: #52525b; /* zinc-600 */
-            box-shadow: 0 10px 30px -10px rgba(255,255,255,0.05);
+            border-color: var(--border-hover) !important;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.08);
         }
+        .card-title   { color: var(--text); }
+        .card-desc    { color: var(--text-muted); }
+        .card-footer  { border-color: var(--border) !important; color: var(--text-subtle); }
+        .card-icon    { color: var(--text-faint); }
+        .card-icon-hover { color: var(--text); }
+
+        /* ── Tag colors ── */
+        .tag-multiagent { background: rgba(217,70,239,0.15); border-color: rgba(217,70,239,0.35); color: #f0abfc; }
+        .tag-agentic    { background: rgba(139,92,246,0.15); border-color: rgba(139,92,246,0.35); color: #c4b5fd; }
+        .tag-rag        { background: rgba(168,85,247,0.15); border-color: rgba(168,85,247,0.35); color: #d8b4fe; }
+        .tag-llm        { background: rgba(99,102,241,0.15); border-color: rgba(99,102,241,0.35); color: #a5b4fc; }
+        .tag-genai      { background: rgba(16,185,129,0.15); border-color: rgba(16,185,129,0.35); color: #6ee7b7; }
+        .tag-rl         { background: rgba(249,115,22,0.15); border-color: rgba(249,115,22,0.35); color: #fdba74; }
+        .tag-deeplearn  { background: rgba(236,72,153,0.15); border-color: rgba(236,72,153,0.35); color: #f9a8d4; }
+        .tag-cv         { background: rgba(244,63,94,0.15);  border-color: rgba(244,63,94,0.35);  color: #fda4af; }
+        .tag-nlp        { background: rgba(234,179,8,0.15);  border-color: rgba(234,179,8,0.35);  color: #fde047; }
+        .tag-ml         { background: rgba(6,182,212,0.15);  border-color: rgba(6,182,212,0.35);  color: #67e8f9; }
+        .tag-automation { background: rgba(20,184,166,0.15); border-color: rgba(20,184,166,0.35); color: #5eead4; }
+        .tag-research   { background: rgba(100,116,139,0.15);border-color: rgba(100,116,139,0.35);color: #cbd5e1; }
+        .tag-audio      { background: rgba(251,191,36,0.15); border-color: rgba(251,191,36,0.35); color: #fde68a; }
+        .tag-finance    { background: rgba(52,211,153,0.15); border-color: rgba(52,211,153,0.35); color: #a7f3d0; }
+        .tag-gamedev    { background: rgba(245,158,11,0.15); border-color: rgba(245,158,11,0.35); color: #fcd34d; }
+        .tag-webdev     { background: rgba(59,130,246,0.15); border-color: rgba(59,130,246,0.35); color: #93c5fd; }
+        .tag-data       { background: rgba(14,165,233,0.15); border-color: rgba(14,165,233,0.35); color: #7dd3fc; }
+        .tag-rust       { background: rgba(239,68,68,0.15);  border-color: rgba(239,68,68,0.35);  color: #fca5a5; }
+
+        /* ── Filter buttons ── */
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-subtle);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.7rem;
+            font-size: 0.7rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
+            white-space: nowrap;
+        }
+        .filter-btn.active {
+            background: var(--text);
+            border-color: var(--text);
+            color: var(--bg);
+        }
+        .filter-btn:hover:not(.active) {
+            background: color-mix(in srgb, var(--text) 6%, transparent);
+            border-color: var(--border-hover);
+            color: var(--text-muted);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .stat-pill { animation: fadeInUp 0.5s ease both; }
     </style>
 </head>
 <body class="min-h-screen p-6 md:p-12 lg:p-24 selection:bg-white selection:text-black">
 
-    <header class="max-w-7xl mx-auto mb-16">
+    <header class="max-w-7xl mx-auto mb-12">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
-                <h1 class="text-4xl md:text-5xl font-semibold tracking-tight mb-3">Eeman1113.</h1>
-                <p class="text-neutral-400 text-lg max-w-2xl font-light leading-relaxed">
-                    A comprehensive archive of my software projects, AI experiments, research, and open-source contributions. Automatically synced with GitHub.
+                <h1 class="text-4xl md:text-5xl font-semibold tracking-tight mb-3" style="color:var(--text);">Eeman1113.</h1>
+                <p class="text-lg max-w-2xl font-light leading-relaxed" style="color:var(--text-muted);">
+                    A comprehensive archive of my software projects, AI experiments, research, and open-source contributions.
                 </p>
                 <div class="flex gap-4 mt-6">
-                    <a href="https://github.com/Eeman1113" target="_blank" class="text-sm font-medium text-neutral-300 hover:text-white transition-colors border-b border-transparent hover:border-white pb-0.5">
+                    <a href="https://github.com/Eeman1113" target="_blank" class="text-sm font-medium transition-colors border-b border-transparent pb-0.5" style="color:var(--text-muted);border-bottom-color:transparent;" onmouseover="this.style.color=getComputedStyle(document.documentElement).getPropertyValue('--text');this.style.borderBottomColor=getComputedStyle(document.documentElement).getPropertyValue('--text')" onmouseout="this.style.color=getComputedStyle(document.documentElement).getPropertyValue('--text-muted');this.style.borderBottomColor='transparent'">
                         View GitHub Profile ↗
                     </a>
                 </div>
             </div>
-            
             <div class="w-full md:w-auto relative">
-                <svg class="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-neutral-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                <input type="text" id="searchInput" placeholder="Search repositories..." class="w-full md:w-80 bg-neutral-900/50 border border-neutral-800 rounded-xl pl-12 pr-4 py-3 text-sm focus:outline-none focus:border-neutral-500 focus:ring-1 focus:ring-neutral-500 transition-all text-white placeholder-neutral-500">
+                <svg class="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5" style="color:var(--text-faint);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                <input type="text" id="searchInput" placeholder="Search repositories..." class="w-full md:w-80 rounded-xl pl-12 pr-4 py-3 text-sm focus:outline-none transition-all" style="background:var(--input-bg);border:1px solid var(--border);color:var(--text);">
             </div>
         </div>
+
+        <!-- Stats bar -->
+        <div id="statsBar" class="hidden mt-6 flex flex-wrap gap-4 text-xs" style="color:var(--text-subtle);">
+            <span id="statTotal" class="stat-pill"></span>
+            <span id="statAgentic" class="stat-pill" style="color:#c084fc;"></span>
+            <span id="statLLM" class="stat-pill" style="color:#818cf8;"></span>
+        </div>
+
+        <!-- Filter chips -->
+        <div id="filterRow" class="hidden mt-4 flex flex-wrap gap-2"></div>
     </header>
 
     <main class="max-w-7xl mx-auto">
-        <!-- Loading State -->
-        <div id="loading" class="flex flex-col items-center justify-center py-20 text-neutral-500 space-y-4">
-            <svg class="animate-spin h-8 w-8 text-neutral-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <div id="loading" class="flex flex-col items-center justify-center py-20 space-y-4" style="color:var(--text-subtle);">
+            <svg class="animate-spin h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" style="color:var(--border-hover);">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
             <p class="text-sm animate-pulse">Syncing with GitHub Workspace...</p>
         </div>
-
-        <!-- Project Grid -->
-        <div id="projectGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 hidden">
-            <!-- Cards injected via JS -->
-        </div>
-
-        <!-- No Results State -->
-        <div id="noResults" class="hidden text-center py-20 text-neutral-500">
+        <div id="projectGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 hidden"></div>
+        <div id="noResults" class="hidden text-center py-20" style="color:var(--text-subtle);">
             <p class="text-lg">No projects found matching your search.</p>
         </div>
     </main>
 
-    <footer class="max-w-7xl mx-auto mt-24 pt-8 border-t border-neutral-900 text-neutral-600 text-sm flex justify-between items-center">
+    <footer class="max-w-7xl mx-auto mt-24 pt-8 text-sm flex justify-between items-center" style="border-top:1px solid var(--footer-border);color:var(--text-faint);">
         <p>© 2026 Eeman1113. All rights reserved.</p>
         <p>Live synchronized via GitHub API</p>
     </footer>
 
     <script>
-        // Custom descriptions provided by the user. 
-        // These will override the default GitHub descriptions to maintain the detailed, high-quality context.
-        const customData = {
-            "Study_For_Me_AI": "A Python-based AI study assistant that automatically generates answers from textual data for efficient learning.",
-            "ML-BASED-CAREER-COUINCLER": "A Streamlit-based career counselor that suggests job positions using OpenAI's GPT-3 model and generates report images with the PIL library.",
-            "Better_Song_reccomendetar_than_spotify": "A Python-based Spotify playlist generator that leverages audio feature analysis to automate personalized playlist creation through Spotipy integration.",
-            "My-AI-ML-Neural-net-and-Tensorflow-Study": "A Python-based TensorFlow study repository that provides step-by-step Jupyter notebooks for implementing neural networks and machine learning algorithms.",
-            "FILL_ME_UP": "A Python-based Streamlit application that generates Google Form responses for academic surveys using OpenAI's GPT-3.5-turbo.",
-            "AI_to_attend_my_online_classes": "A Python-based AI assistant that automates online class attendance using voice recognition and chatbot interactions.",
-            "Chatterboii69": "A Python-based chatbot framework that processes user input using text recognition through CSV data analysis.",
-            "Eeman1113.github.io": "My personal portfolio website.",
-            "Generating-Art-using-AI": "A Python-based art generation tool that employs generative AI models to create digital artwork from the CC12M dataset.",
-            "Lenia_Python_Implementation": "A Python-based tutorial notebook that guides users through evolving from discrete to continuous cellular automata via interactive code modifications.",
-            "PyFlashlight": "A Python-based deep learning framework that implements GPU-accelerated automatic differentiation for educational implementation of tensor operations and neural network training.",
-            "LeapHigher": "A Python-based auto-clicker that automates solving coding platform challenges using OCR and UI interaction via screenshot capture and database-driven answer submission.",
-            "plant-monitoring-system-using-python-and-audrino": "A Python and Arduino-based plant monitoring system that tracks temperature and humidity using DHT11 sensors and generates real-time data visualizations through live graph plotting.",
-            "dogs-Vs-cats-AI-": "A Python-based image classifier that differentiates dog and cat images using neural networks.",
-            "Teaching-stuff": "A Python-based educational resource that teaches fundamental programming concepts through practical exercises and supplementary course materials.",
-            "digits-AI": "A Python-based digit recognition tool that identifies handwritten digits using machine learning via Scikit-learn.",
-            "MLFS": "A Machine Learning guidebook that teaches foundational concepts through step-by-step tutorials and visual examples.",
-            "Eeman": "A SketchUp-based architectural repository that provides house design models.",
-            "Face-tracker-cv3-": "A Python-based face tracker that detects faces in real-time using OpenCV 3's Haar cascade algorithm.",
-            "telegram-dog-bot": "A Python-based Telegram bot that sends random dog images in response to the `/bop` command.",
-            "AI-to-send-you-newspapers-from-a-randomly-made-up-world.": "A Python-based headline generator that creates fictional news articles from a simulated world using AI-driven algorithms.",
-            "rat_bonk": "A Python-based game that implements rat-bonking mechanics through keyboard-controlled movement.",
-            "HackX": "A Python-based cheating tool that automates cheating in online exams.",
-            "Ampusee": "A book reader that you can control with your finger using simple hand gesture recognition through a webcam interface made for buildspace.",
-            "Morse-code": "A Python-based Morse code translator that converts text to Morse signals and decodes Morse sequences back to text.",
-            "playothello.online": "A pure HTML/CSS/JavaScript-based Othello game that enables real-time gameplay against AI opponents across three difficulty levels.",
-            "Examinee_AI": "A Streamlit-based question-answering application that generates answers using OpenAI's GPT-3 API and displays results with visual formatting.",
-            "AI-to-make-wierd-spotify-playlists-": "A Python-based Jupyter Notebook that generates weird Spotify playlists using AI-driven algorithms.",
-            "QR_BASED_ATTENDANCE": "A Python-based QR attendance system that scans QR codes to track employee check-ins.",
-            "word-2-word-level-transcription-and-forced-alignment-lip-sync-ultra-pro-max-2d-avatar": "A Python-based lip-syncing engine that generates synchronized 2D avatar animations through decibel-based image assignments derived from audio processing.",
-            "CHEATCHINGU": "A Python-based OCR utility that extracts text from screenshots using computer vision techniques.",
-            "AI": "A Python-based AI implementation that provides very simple machine learning functionality using basic algorithms.",
-            "Automated_Email_System-": "A Python-based automated email system that schedules and sends messages via SMTP.",
-            "The-AI-Based-Book-Generator": "An AI-powered book generator that produces narrative content through machine learning algorithms.",
-            "detection-of-COVID-19-WITH-KERAS": "A x-ray analysis tool that detects COVID-19 using Keras-based convolutional neural networks for image classification.",
-            "bill-management": "A Python-based bill management tool that prints and saves restaurant invoices in text format.",
-            "seo": "A Python-based SEO toolkit that generates meta tags and sitemaps for improved search engine visibility.",
-            "OCR_for_SBI": "A Python-based OCR system for SBI that processes scanned documents using OpenCV and Tesseract for automated data extraction.",
-            "Chatbot_in_15_lines_GPT-3": "A Python-based chatbot implementation that utilizes OpenAI's API to generate conversational responses via GPT-3's text-davinci-002 model in a concise 15-line Jupyter notebook.",
-            "AutoGitter": "A Python-based Git automation tool that efficiently manages and interacts with Git repositories.",
-            "DivineFinder": "A Python-based web application that enables religious search functionality using JSON data storage and HTML interfaces for spiritual inquiry.",
-            "mg": "A Rust-based writing checker that detects weasel words, passive voice, duplicate words, and spelling errors.",
-            "Commit_Kar_Deta_Hun": "A Git-based repository that demonstrates basic commit operations using sequentially numbered text files for illustrative purposes.",
-            "Enahncing-Images-using-AI": "A Python-based image enhancement toolkit that leverages ESRGAN for accelerated AI-driven super-resolution through optimized implementation.",
-            "Time_Bomb": "A JavaScript-based web application that simulates virtual file deletion upon timer expiration.",
-            "notion-like-ai-editor": "A Next.js-based collaborative text editor that integrates Lexical with Liveblocks for real-time editing and Vercel AI SDK for AI-assisted content generation.",
-            "Ethindia23_PS": "A Python-based data processing utility that analyzes Ethereum transaction data from CSV files using custom parsing logic.",
-            "AI-writes-Articles": "A Python-based AI article generator that leverages GPU-accelerated language models to produce text from pre-trained vocabulary.",
-            "Github_Contributor_AI_Ver": "An AI-powered GitHub contributor analysis tool that identifies active contributors using machine learning.",
-            "Esoteric_Languages_Adventures": "A Brainfuck-based repository that provides esoteric programming examples for language adventures.",
-            "anius": "A Streamlit-based Python web application that enables anime streaming and search with embedded video players.",
-            "Machine-Learning-Study": "A Python-based educational repository for applied machine learning coursework featuring weekly Jupyter notebook modules that implement K-Nearest Neighbors classification tasks with fruit datasets as part of a Coursera course.",
-            "NGO_Manager": "A Node.js-based volunteer management system that streamlines NGO volunteer coordination and event organization using PostgreSQL-backed data models.",
-            "Length_Based_Video_Sorter": "A Python-based video sorter that sorts media files into duration-based folders using FFmpeg.",
-            "nextprompter": "A Python-based Next.js file processor that dynamically applies user prompts to generate and preview modified code snippets.",
-            "JoJo": "A Python-based data analysis tool that processes and visualizes India's job market dataset.",
-            "Movie_Plotter_AI": "A Python-based movie plot generator that leverages AI models to analyze text data and create narrative structures.",
-            "housefly": "A Python-based house layout generator that creates ASCII art representations of rooms with random doors and windows.",
-            "Scrape_Me_Zaddy": "A Python-based web scraping tool that extracts text content from specified HTML elements and saves results to text files via Streamlit.",
-            "readball": "A web-based retro-themed application that simulates football matches using real-time text-based commentary.",
-            "Python_To_English": "A Python-based translator that converts Python code into natural English.",
-            "Medium-Articles-": "A static HTML blog platform that hosts machine learning tutorials and AI project showcases through HTML-based articles.",
-            "CNWGOL": "A web-based implementation of Conway's Game of Life that simulates cellular automaton evolution through interactive HTML canvas rendering.",
-            "Chandler-Bing-Deep-Learning-AI": "A Python-based deep learning chatbot that implements conversational AI using Jupyter Notebook implementations.",
-            "AI-that-chats-with-my-friends-": "A Rust-based chatbot that facilitates natural language conversations with friends using artificial intelligence.",
-            "Noter": "A Python-based note-making application that generates comprehensive study materials using Streamlit and Groq API integration.",
-            "Humaneyes": "A Python-based eye detection library that utilizes traditional computer vision techniques without AI algorithms.",
-            "What-Should-I-make-Today": "A Python-based meal recommendation tool that generates daily cooking suggestions using an Indian food dataset.",
-            "Chetan-Bhagat-AI": "A Python-based AI generator that creates Chetan Bhagat-style prose using natural language processing.",
-            "Story": "A extremly complicated multi agent system that generates stories through recursive agent interactions and dynamic tool calling to create complex narratives.",
-            "rust_grammar": "A Rust-based grammar analysis library and REST API server that processes text for syntax errors, passive voice detection, and readability metrics through CLI and API endpoints.",
-            "Artificial_Life": "A Python-based Conway's Game of Life simulation that models cellular automaton evolution using Pygame graphics.",
-            "NNFS": "A Python-based neural network framework that executes sequential module operations through numbered script files.",
-            "huddler": "A Python-based AI system for collaborative huddle meetings that utilizes RAG fusion to enhance real-time interaction and information retrieval.",
-            "AI-to-rate-my-AI-projects-": "A Python-based AI project rating tool that evaluates model quality using structured criteria through Jupyter Notebook implementations.",
-            "A2A_Experiments": "A Python-based agent communication framework that enables two AI agents to interact through structured JSON configuration files.",
-            "Coding_Train": "A JavaScript-based coding project that collects interactive programming exercises inspired by the Coding Train.",
-            "mkme": "A command-line tool that suggests what to make.",
-            "Pyamagotchi": "A Python-based virtual pet game that simulates Tamagotchi care using turtle graphics and pygame sound effects.",
-            "AI_to_generate_sentences_from_words": "A Python-based AI-powered sentence generator that transforms keyword inputs into coherent natural language text.",
-            "GODOT_Adventures": "A Godot-based game asset repository that provides customizable character models, scene scripts, and project configurations for interactive game development.",
-            "AI_Girlfriend": "A Machine Learning-based companion bot that simulates realistic human interactions using natural language processing.",
-            "Gerne": "Welcome to Gerne the interactive storytelling adventure where your imagination takes the lead! Get ready for a fantastical odyssey filled with whimsical scenarios and unexpected twists.",
-            "random-": "A Rust-based random number generator that produces cryptographically secure random values for cryptographic and simulation applications.",
-            "Kagaz": "A Groq-integrated LLM-based newspaper generator that creates plot-driven articles with AI-generated characters and locations.",
-            "type": "A JavaScript-based type system that validates data structures using ASCII character representations.",
-            "Earth": "A minimal static HTML website that serves Earth-themed content via index.html.",
-            "Wensday": "A personal AI project that demonstrates fundamental intelligence capabilities.",
-            "Valid_Kun": "A Python-based AI motivational companion that generates personalized motivational messages using OpenAI's language models.",
-            "Homeworker": "A ai agent that does my homework for me.",
-            "Highlight": "A Next.js-based code diff visualizer that dynamically highlights text differences using Quill.js.",
-            "Commitment_iShoes": "A repository containing multiple README files for project documentation purposes.",
-            "ant_man": "A Python-based ant behavior simulation that models pheromone trail navigation and food-seeking dynamics using pygame.",
-            "Magic": "A Python-based utility that executes magical operations through scripted command execution.",
-            "Fun_With_Pandas": "A Python Jupyter Notebook that generates synthetic datasets using pandas for educational demonstration.",
-            "Hand_Ditto": "A TensorFlow-based handwriting synthesis tool that generates customizable SVG images from text using LSTM attention models.",
-            "flow_me_raho_bro": "A Next.js-based web application that analyzes data flows using sentiment analysis and interactive charting libraries.",
-            "large-scale-energy-anomaly-detection": "A Python-based energy anomaly detection system that analyzes large-scale time-series data using Jupyter notebooks for irregularity identification.",
-            "sunnAI": "A Python-based music generation web application that leverages MusicGen models to create endless song content via interactive Jupyter notebooks and command-line interfaces.",
-            "sootplane": "A static HTML website that presents a mind-related concept through minimalist design.",
-            "Work_for_manuscripts.ai": "A Python-based manuscript processing tool that automatically summarizes and paraphrases academic texts using Jupyter Notebook workflows.",
-            "SalvagedWeb": "A simple HTML-based web project that provides basic website pages and documentation via static HTML and Markdown files.",
-            "agent_test": "A TypeScript-based full-stack application that tests generative AI agents within a game environment using React and Node.js.",
-            "Some_Gen_Stuff": "A Python-based inference framework that implements DALL·E and Stable Diffusion pipelines for experimental image generation model testing.",
-            "Portfolio": "A MIT-licensed portfolio repository that provides software licensing terms.",
-            "DEW": "A TensorFlow-based chatbot that leverages LSTM layers for intent recognition and natural language dialogue through sequence modeling.",
-            "AutoCars": "A JavaScript-based autonomous traffic simulation engine that models urban traffic patterns using swarm intelligence to minimize collision rates and optimize route planning for AI-driven vehicles.",
-            "veditor": "A Python-based intelligent video editing pipeline that automates content curation through multi-stage processing using voice activity detection, speech recognition, and large language model-driven semantic deduplication.",
-            "seascolor": "A Streamlit-based color analysis tool that classifies skin undertones and seasonal types through K-means clustering on image pixels using HSV color space analysis.",
-            "nativesee": "A Next.js-based PDF reader that enables hand gesture navigation using TensorFlow.js hand pose models for page selection.",
-            "Black-and-white-to-colour-photos": "A Python-based image converter that transforms black-and-white photographs into color using neural networks.",
-            "PrompterToolkit": "A Python Streamlit application that processes Next.js project files to generate prompt-enhanced output files from user-selected JavaScript code.",
-            "Dinorant": "A rl based chrome dino game bot that uses Q-learning to optimize gameplay strategies and achieve high scores.",
-            "React-Text-Editor-Using-Quill.js": "A React-based text editor that utilizes Quill.js for rich text editing functionality.",
-            "The-Yolo-Bootcamp": "A Jupyter Notebook implementation of YOLOv7 that executes GPU-accelerated object detection using PyTorch and pre-trained weights.",
-            "Procedural_Generation_Python": "A Python-based procedural generation toolkit that creates 3D terrain, cave systems, and islands using Perlin noise and BFS algorithms.",
-            "morphic-ai-answer-engine-generative-ui": "A Next.js-based AI-powered search engine that integrates multiple generative AI providers with customizable UI capabilities using Vercel AI SDK RSC and Radix UI components.",
-            "Resuwrite": "A Python-based AI novel generation system that transforms resume data into structured creative stories using specialized LLM chains and Groq-powered language models.",
-            "yapnotes": "Speech-to-text note-taking application that captures audio input and converts it into organized notes using Python libraries for audio processing and natural language understanding.",
-            "Moon_Phase": "A Streamlit-based birthday moon phase calculator that computes lunar phase names and illumination percentages for user-selected dates.",
-            "UniversalComponents": "A JavaScript-based health tracking application that integrates modular components for diet, food database, and symptom monitoring.",
-            "PythonRSB": "A Python-based AI writing assistant that analyzes text for redundancy, filler words, and readability using NLTK and Groq API integration.",
-            "Pharma-Mart": "A Next.js application that leverages Radix UI components and Tailwind CSS for responsive, accessible user interfaces.",
-            "Stable_Diffusion_App": "Streamlit-based Stable Diffusion application that generates images from user prompts using the Hugging Face diffusers library.",
-            "Grammar_Engine": "A Haskell-based grammar engine executable that processes natural language syntax using JSON data structures and HTTP APIs for grammar analysis.",
-            "Generating-Animation-By-An-AI": "A Python-based animation generator that leverages VQGAN and CLIP for synthesizing AI-driven video content from textual prompts.",
-            "eeja": "A responsive HTML/CSS/JavaScript portfolio site that dynamically displays a grid of looping video clips with interactive fullscreen toggling.",
-            "WebGraphics": "A lightweight HTML/SVG-based web graphics toolkit that provides interactive graphical representations through browser-rendered HTML and SVG files.",
-            "infiwrite": "Imagine a writing space that doesn't interrupt you. It's just a blank void with soft noise like an old analog TV left humming in the back of your head. That's Infiwrite.",
-            "konflict": "A JavaScript-based news digest application that aggregates and filters RSS feeds to curate India-Pakistan conflict-focused articles using keyword-based relevance checks.",
-            "Pokemon_Adventures": "A Tailwind-based web application that dynamically displays Pokémon data in a responsive grid with a search interface.",
-            "TypeFaster": "A Python-based typing automation tool that uses Selenium and PyAutoGUI to simulate keyboard input on Human Benchmark tests for speed measurement.",
-            "Invest": "A web-based investment education game that visualizes financial trends using Chart.js and glassmorphism UI elements within a responsive HTML5 framework.",
-            "Talkative_Docs": "Interactive document processor (Outputs 6 via python multiplication).",
-            "anyoouhl": "A Streamlit-based Retrieval-Augmented Generation application that integrates Tavily web search with document processing to generate comprehensive AI responses.",
-            "janku_humaneyes": "A Next.js-based web application with shadcn/ui components that integrates Python API endpoints to humanize text for natural language processing.",
-            "AI_Detector": "A Python-based AI detector that identifies AI-generated content using BERT model analysis.",
-            "LeapCode": "A Chrome extension that extracts LeetCode problem code from walkccc.me into a CSV database using pandas, with Discord integration via discord.py.",
-            "Leetcode": "A C++ solutions repository that provides implementations for Leetcode programming challenges.",
-            "Mario-RL-AI": "A Python-based reinforcement learning agent that navigates Super Mario levels using Q-learning.",
-            "Bookish": "A Streamlit-based book chapter generator that leverages OpenAI's text-davinci-003 model to produce 2000-word chapters from user-provided book details.",
-            "Anime-Synopsis-Generator-With-Deep-Learning": "A GPT-2-based Anime Synopsis Generator that produces grammatically structured AI-generated anime synopses using deep learning techniques.",
-            "Wirerio": "An AI-powered JavaScript-based web application that converts hand-drawn UI sketches into functional HTML/CSS/JS code using Google's Gemini model.",
-            "Sume_Kun": "A minimal GitHub repository named Sume_Kun that includes a README and license file.",
-            "Commitment_iShoes_2": "A versioned documentation system for tracking commitments in shoe inventory management.",
-            "Eeman1113": "A Streamlit-based portfolio website that showcases AI projects including YOLOv7 dog detection and ML-based career counseling.",
-            "High_Life": "PDF to study notes generator that processes PDF documents to extract key information and generate structured study notes.",
-            "AsciiCam": "A Streamlit-based webcam-to-ASCII converter that dynamically transforms live camera input into monochrome ASCII art using OpenCV.",
-            "Sell_Me_A_Thing_AI": "An AI-driven sales pitch generator that creates persuasive product descriptions for e-commerce platforms.",
-            "eemanGPT": "A Streamlit-based chat interface that integrates the Groq API to provide a conversational AI experience using the llama3-8b model.",
-            "Neyus": "A Python-based Streamlit application that scrapes news headlines from inshorts.com using BeautifulSoup and displays them via a user interface.",
-            "The_Thing_Maker": "A Python-based tool that generates customizable objects.",
-            "black-and-white-videos-to-colour-": "A Python-based video colorization tool that converts black-and-white videos to color using Jupyter notebook-based implementation.",
-            "Dawg": "A Streamlit-based object detection application that processes images using Hugging Face Spaces configurations.",
-            "Pathfinder": "A Streamlit-based file path finder that dynamically locates specific files within GitHub repositories and generates direct access links for user navigation.",
-            "I_Make_Notes": "CLI-based note-taking tool that processes user input into structured notes.",
-            "fintech": "A Llama-based conversational AI model that generates fintech-specific text through prompt-based processing.",
-            "calc": "A web-based unit economics calculator that dynamically computes business metrics using client-side JavaScript with responsive input forms.",
-            "lucida": "A minimalist HTML-based static website template that serves as a foundation for web development projects.",
-            "sad": "A Python-based meditative text generator that uses Ollama to produce character-by-character language outputs through adaptive looping to prevent repetitive content.",
-            "Susu": "A Tailwind-based Sudoku puzzle generator that enables interactive puzzle creation, solution checking, and solving across three difficulty levels.",
-            "yjs_lexi": "A JavaScript-based lexer that tokenizes collaborative text using Yjs for real-time synchronization.",
-            "blahblah": "A minimal project repository that includes a README file titled blahblah.",
-            "JS_Interview": "JS Interview questions database.",
-            "how_we_act": "A Python-based town simulation that leverages Ollama for LLM-driven cognitive interactions within a dynamic urban environment using Pygame.",
-            "UC": "A Vite-based TypeScript React application leveraging Shadcn/ui components to deliver a dashboard-oriented journaling platform to monitor Ulcerative Colitis flow symptoms.",
-            "day-scribe-essence": "A React/TypeScript diary application that integrates Supabase authentication and supports multimedia entries using Shadcn/ui components.",
-            "sci": "A CrewAI and LangGraph-integrated multi-agent research platform that automatically synthesizes comprehensive academic reports through recursive web exploration.",
-            "dev-ee": "A Streamlit-based Python code editor that executes user-submitted code and displays runtime output via a console interface.",
-            "Agentic_Description": "A multi agent system with proper tool calling to generate descriptions for all my repos in a csv file.",
-            "evolve": "An evolution-based discovery model inspired by Alphaevolve that utilizes adaptive genetic algorithms for optimized exploration.",
-            "Heartbeat": "A Python-based image processing utility that converts and optimizes photo gallery assets to WebP format for efficient web delivery.",
-            "gram": "A Rust-based grammar checker that detects weasel words, passive voice, and duplicate words using regex to improve academic writing quality.",
-            "TATPILTM": "A static HTML-based web application that renders a basic homepage through its index.html file.",
-            "500_React_Interview_Questions": "A Streamlit-based React interview study web application that provides interactive flashcards and category filtering for 500 questions.",
-            "Rhythm": "A Next.js-based web application that utilizes Radix UI components and Tailwind CSS to create accessible, responsive user interfaces.",
-            "The_Window": "A static HTML-based window manager that dynamically adjusts application layouts using CSS.",
-            "Prologue_Please": "A static HTML-based book store that displays inventory data from a CSV file using embedded image assets for visual presentation.",
-            "_rvsp_": "A JavaScript-based speed reading application that leverages Rapid Serial Visual Presentation (RSVP) technology to enhance reading efficiency.",
-            "Lump": "A JavaScript-based writing tool that integrates Quill.js with AI-powered text suggestions for digital content creation.",
-            "test": "A static website that serves multiple HTML pages for testing purposes.",
-            "Planin": "A Node.js-based API proxy server that routes Notion API requests via a dynamically generated authentication key.",
-            "infinite": "A web-based discovery tool featuring network graph visualization with Vis.js and Tailwind CSS, incorporating a sidebar, search functionality, and dark mode.",
-            "Interviewer": "A Python-based audio segmentation tool that extracts individual questions from an MP3 audio file using timestamp-based JSON data.",
-            "EWITW": "A Python-based combinatorial generator that creates infinite CSV libraries containing all possible character sequences.",
-            "AutoDiscovery": "A Python-based multi-agent autonomous research platform that transforms user queries into structured documentation using Google Gemini API and parallel agent collaboration.",
-            "likho": "A Next.js-based handwriting generator that converts text into realistic, customizable SVG outputs using an in-browser recurrent neural network with adjustable parameters.",
-            "AgeSci": "AgeSci is an autonomous multi-agent system leveraging LLMs via Ollama to generate IEEE-format academic papers with integrated citations and LaTeX compilation.",
-            "Articles": "An AI-focused repository that hosts Medium-published articles detailing various implementation projects and tutorials on artificial intelligence.",
-            "Sira": "A Python-based conversational AI agent that leverages FAISS and sentence embeddings for persistent memory management and generates context-aware responses using Google's Gemini API.",
-            "Orbit": "A static HTML-based website that challenges users to win through orbital mechanics.",
-            "Idaten_Jump": "A static HTML-based encyclopedia that compiles fan-generated media assets and content for the Idaten Jump series.",
-            "spellcheck": "A Rust-based spell checker that implements Peter Norvig's statistical algorithm for spell correction using n-grams.",
-            "is_shree_alive": "A static HTML website that serves a minimal page with an embedded image asset.",
-            "maze": "A HTML-based maze game that dynamically renders interactive pathways for browser navigation.",
-            "Hivemind": "A Python-based multi-agent AI research system that collaborates through specialized agents to autonomously generate LaTeX-formatted research papers.",
-            "harp": "A Rust-based grammar checker that delivers instant, private syntax verification through WebAssembly-optimized processing.",
-            "500_NodeJs_Interview_Questions": "A Streamlit-based Python application that dynamically explores 500 Node.js interview questions through category filtering and search functionality.",
-            "Universal_Paperclips_Auto": "A Python-based Selenium automation bot that automates Paperclip trading interactions in a browser-based game.",
-            "BookVaccum": "A Python-based book downloader that systematically retrieves Project Gutenberg eBooks in bulk using requests and tqdm progress tracking.",
-            "Last_Tea_Shop_Web": "A Tailwind CSS-based static website that provides interactive dice rollers and downloadable character sheets for tabletop RPG sessions.",
-            "blush": "A Streamlit-based skin tone analyzer that recommends personalized blush colors based on facial analysis using OpenCV and clustering algorithms.",
-            "tetrisAI": "A JavaScript-based Tetris game that uses AI to dynamically optimize piece placement strategies for enhanced gameplay.",
-            "humanize-ai": "A React-based text humanization platform that generates natural-sounding sentence alternatives with Supabase authentication and Stripe payment integration.",
-            "ConvergenceEngine": "The trajectory of artificial intelligence over the past decade has been defined by a compelling yet challenging paradox (research work).",
-            "Isabella": "A Python-based AI interviewer that conducts interactive interviews for job candidates using natural language processing.",
-            "Around_Us": "A Cesium-powered web-based flight simulator that enables real-time 3D globe navigation with photorealistic terrain and building models.",
-            "ADAS_Mobile": "A Python-based ADAS application that provides real-time driving assistance using YOLOv8 object detection and lane tracking.",
-            "aegis": "AEGIS / イージス — Enterprise Security & Quarterly Regression Testing Platform. Self-hosted Streamlit dashboard with live AWS integration.",
-            "Parallel-Agent-Reinforcement-Learning-PARL-": "A PARL-based agent swarm system that dynamically creates specialized sub-agents to generate complete novels.",
-            "autofx": "A extremely mathematical python based forex trading bot that uses technical indicators and machine learning to make informed trading decisions.",
-            "Bday": "A Vite-powered React-based birthday website that utilizes GSAP animations and canvas-confetti for interactive celebration effects.",
-            "valentine": "A React-based Valentine's Day website that animates interactive heart formations using GSAP and Framer Motion.",
-            "investment-research-agent": "A Python-based investment research agent that orchestrates real-time market data, financial news, and SEC filings via Amazon Bedrock.",
-            "Cube_King": "A Fodian game that challenges players to reach the top of a level and climb to 1000m.",
-            "Anime_Data_Science": "An anime data science project that analyzes trends and preferences in anime content.",
-            "sumworry": "A shadcn/ui-based React application that provides interactive text and scientific data analysis through customizable dashboard components and visualization tools.",
-            "home": "A Python-based local-first generative agent framework that enables Ollama-powered asynchronous LLM interactions, 2D world modeling, and context-budgeted dialogue simulation.",
-            "Stethoscope": "A JavaScript-based web application that generates Git changelogs by connecting to GitHub and GitLab repositories via authentication tokens.",
-            "Pokerguru": "A poker hand analysis tool that evaluates hand strength and winning probabilities using combinatorial mathematics and machine learning techniques.",
-            "Scholar": "A React-based AI-powered writing workspace that orchestrates multi-agent systems for academic research and citation management.",
-            "Trending": "A Python-based market trend analyzer that aggregates AI-related news from RSS feeds and web sources to generate structured trend reports using SQLite storage."
-        };
+    // ─────────────────────────────────────────────────────────────────────────────
+    // ULTRA-SMART TAGGER v2
+    // Priority-weighted, AI-domain-aware. Tags are objects: {id, label, cls}.
+    // ─────────────────────────────────────────────────────────────────────────────
+    // Lucide icon SVGs for tags (14x14, stroke-based, inline)
+    const ICONS = {
+        'Multi-Agent':    `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>`,
+        'Agentic AI':     `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,
+        'RAG':            `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`,
+        'LLM':            `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
+        'Generative AI':  `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`,
+        'RL':             `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>`,
+        'Deep Learning':  `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/><circle cx="5" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><line x1="12" y1="7" x2="12" y2="10"/><line x1="12" y1="14" x2="12" y2="17"/><line x1="7" y1="12" x2="10" y2="12"/><line x1="14" y1="12" x2="17" y2="12"/></svg>`,
+        'Computer Vision':`<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`,
+        'NLP':            `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="9" y1="10" x2="15" y2="10"/></svg>`,
+        'Machine Learning':`<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>`,
+        'Automation':     `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>`,
+        'Research':       `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`,
+        'Audio':          `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>`,
+        'Finance':        `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`,
+        'Game Dev':       `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><line x1="6" y1="12" x2="10" y2="12"/><line x1="8" y1="10" x2="8" y2="14"/><circle cx="16" cy="11" r="1" fill="currentColor"/><circle cx="19" cy="13" r="1" fill="currentColor"/></svg>`,
+        'Web Dev':        `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
+        'Data Science':   `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>`,
+        'Rust':           `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+    };
 
-        const GITHUB_USERNAME = 'Eeman1113';
-        let allProjects = [];
+    const TAG_DEFINITIONS = [
+        // Tier 1 — Specific AI architecture (highest specificity, fires first)
+        { id: 'Multi-Agent',    label: 'Multi-Agent',          cls: 'tag-multiagent', priority: 1,
+          match: t => /multi.?agent|agent.?swarm|crewai|langgraph|a2a|parallel.?agent|sub.?agent|specialized.?agent/.test(t) },
+        { id: 'Agentic AI',     label: 'Agentic',              cls: 'tag-agentic',    priority: 1,
+          match: t => /\bagent(ic|s)?\b|autonomous.*ai|ai.*autonom|tool.?call|agentic|autonom.*research/.test(t) },
+        { id: 'RAG',            label: 'RAG',                  cls: 'tag-rag',        priority: 1,
+          match: t => /\brag\b|retrieval.?augmented|faiss|vector.?store|semantic.*search|rag.?fusion|knowledge.*retrieval/.test(t) },
+        { id: 'LLM',            label: 'LLM',                  cls: 'tag-llm',        priority: 1,
+          match: t => /\bllm\b|\bgpt.?[234]?\b|openai|groq|ollama|gemini|llama|mistral|bedrock|text.?davinci|language.?model/.test(t) },
+        { id: 'Generative AI',  label: 'Generative AI',        cls: 'tag-genai',      priority: 1,
+          match: t => /stable.?diffusion|dall.?e|vqgan|clip|diffusion.?model|esrgan|musicgen|generat.*image|generat.*art|generat.*animat/.test(t) },
+        { id: 'RL',             label: 'Reinforcement Learning', cls: 'tag-rl',       priority: 1,
+          match: t => /reinforcement.?learn|\bq.?learn|\brl\b|dqn|ppo|policy.*gradient|reward.*function/.test(t) },
 
-        // Language Colors for badges
-        const languageColors = {
-            "Python": "bg-blue-500",
-            "JavaScript": "bg-yellow-400",
-            "TypeScript": "bg-blue-400",
-            "HTML": "bg-orange-500",
-            "CSS": "bg-blue-300",
-            "Rust": "bg-orange-600",
-            "C++": "bg-pink-600",
-            "Jupyter Notebook": "bg-orange-400",
-            "Shell": "bg-green-400",
-            "GDScript": "bg-blue-600",
-            "Haskell": "bg-purple-500"
-        };
+        // Tier 2 — AI/ML techniques
+        { id: 'Deep Learning',  label: 'Deep Learning',        cls: 'tag-deeplearn',  priority: 2,
+          match: t => /deep.?learn|neural.?net|tensorflow|pytorch|keras|lstm|transformer|\bcnn\b|\brnn\b|\bbert\b/.test(t) },
+        { id: 'Computer Vision',label: 'Vision',               cls: 'tag-cv',         priority: 2,
+          match: t => /computer.?vision|opencv|yolo|object.?detect|image.?classif|face.?detect|hand.?gesture|ocr\b|tesseract/.test(t) },
+        { id: 'NLP',            label: 'NLP',                  cls: 'tag-nlp',        priority: 2,
+          match: t => /\bnlp\b|natural.?language|sentiment|text.?classif|speech.?recogn|transcri|voice.?recogn|word2vec|nltk/.test(t) },
+        { id: 'Machine Learning',label: 'ML',                  cls: 'tag-ml',         priority: 2,
+          match: t => /machine.?learn|\bml\b|scikit|sklearn|random.?forest|gradient.?boost|\bsvm\b|k.?nearest|\bknn\b|predict/.test(t) },
 
-        // Auto-tagging system based on keywords
-        function extractTags(name, description, language) {
-            const tags = new Set();
-            const text = `${name} ${description}`.toLowerCase();
-            const lang = language ? language.toLowerCase() : '';
+        // Tier 3 — domains
+        { id: 'Automation',     label: 'Automation',           cls: 'tag-automation', priority: 3,
+          match: t => /automat|selenium|pyautogui|web.?scrap|scraping|\bbot\b|scheduler|headless/.test(t) },
+        { id: 'Research',       label: 'Research',             cls: 'tag-research',   priority: 3,
+          match: t => /research|academic|ieee|latex|arxiv|survey|literature|citation|scholarly|synthes.*report/.test(t) },
+        { id: 'Audio',          label: 'Audio',                cls: 'tag-audio',      priority: 3,
+          match: t => /musicgen|audio|speech.?to|text.?to.?speech|\btts\b|\bwav\b|lip.?sync|decibel|audio.?process/.test(t) },
+        { id: 'Finance',        label: 'Finance',              cls: 'tag-finance',    priority: 3,
+          match: t => /fintech|invest|trading|forex|stock|market|portfolio|financial|ethereum|crypto|sec.?filing|quant/.test(t) },
+        { id: 'Game Dev',       label: 'Game Dev',             cls: 'tag-gamedev',    priority: 3,
+          match: t => /\bgame\b|pygame|godot|tetris|chess|mario|dino|cellular.?autom|conway|lenia|ant.*sim/.test(t) },
+        { id: 'Web Dev',        label: 'Web Dev',              cls: 'tag-webdev',     priority: 3,
+          match: t => /next\.?js|streamlit|web.?app|frontend|dashboard|api.?server|node\.?js|express|fastapi|flask|react/.test(t) },
+        { id: 'Data Science',   label: 'Data Science',         cls: 'tag-data',       priority: 3,
+          match: t => /data.?sci|data.?analy|pandas|matplotlib|jupyter|visualization|time.?series/.test(t) },
+        { id: 'Rust',           label: 'Rust',                 cls: 'tag-rust',       priority: 3,
+          match: (t, lang) => lang === 'Rust' || /\brust\b/.test(t) },
+    ];
 
-            // Languages & Frameworks (Skipping if it's already the primary language)
-            if (text.includes('react')) tags.add('React');
-            if (text.includes('next.js') || text.includes('nextjs')) tags.add('Next.js');
-            if (text.includes('node.js') || text.includes('nodejs')) tags.add('Node.js');
-            if (text.includes('streamlit')) tags.add('Streamlit');
-            if (text.includes('tailwind')) tags.add('Tailwind');
-            if (text.includes('rust') && lang !== 'rust') tags.add('Rust');
-            if (text.includes('python') && lang !== 'python') tags.add('Python');
-            if (text.includes('c++') && lang !== 'c++') tags.add('C++');
-            
-            // AI & ML
-            if (text.includes(' ai ') || text.includes('artificial intelligence') || text.includes('-ai') || text.includes('_ai') || name.toLowerCase().endsWith('ai')) tags.add('AI');
-            if (text.includes('machine learning') || text.includes(' ml ')) tags.add('Machine Learning');
-            if (text.includes('llm') || text.includes('gpt') || text.includes('ollama') || text.includes('openai') || text.includes('gemini') || text.includes('groq')) tags.add('LLMs');
-            if (text.includes('deep learning') || text.includes('neural network') || text.includes('tensorflow') || text.includes('keras') || text.includes('pytorch')) tags.add('Deep Learning');
-            if (text.includes('computer vision') || text.includes('opencv') || text.includes('yolo') || text.includes('image')) tags.add('Computer Vision');
-            if (text.includes('nlp') || text.includes('natural language')) tags.add('NLP');
+    function extractTags(name, description, language) {
+        const text = `${name} ${description}`.toLowerCase().replace(/[-_]/g, ' ');
+        const matched = TAG_DEFINITIONS.filter(d => d.match(text, language));
+        matched.sort((a, b) => a.priority - b.priority);
+        // Dedupe: drop generic ML if Deep Learning already matched
+        const seen = new Set();
+        const result = [];
+        for (const t of matched) {
+            if (t.id === 'Machine Learning' && seen.has('Deep Learning')) continue;
+            seen.add(t.id);
+            result.push(t);
+        }
+        return result.slice(0, 3);
+    }
 
-            // Domains
-            if (text.includes('game') || text.includes('pygame') || text.includes('godot') || text.includes('tetris')) tags.add('Game Dev');
-            if (text.includes('web application') || text.includes('website') || text.includes('html')) tags.add('Web Dev');
-            if (text.includes('automation') || text.includes('bot') || text.includes('selenium')) tags.add('Automation');
-            if (text.includes('data science') || text.includes('pandas') || text.includes('dataset')) tags.add('Data Science');
+    // ─────────────────────────────────────────────────────────────────────────────
+    // Language dot colors
+    // ─────────────────────────────────────────────────────────────────────────────
+    const languageColors = {
+        "Python": "#3b82f6", "JavaScript": "#facc15", "TypeScript": "#60a5fa",
+        "HTML": "#f97316", "CSS": "#93c5fd", "Rust": "#ea580c", "C++": "#db2777",
+        "Jupyter Notebook": "#fb923c", "Shell": "#4ade80", "GDScript": "#2563eb", "Haskell": "#a855f7"
+    };
 
-            // Prevent duplicating the primary language as a tag
-            if (language) {
-                tags.delete(language);
-                if (language === 'Jupyter Notebook') tags.delete('Jupyter Notebook');
-            }
+    // ─────────────────────────────────────────────────────────────────────────────
+    // Custom descriptions
+    // ─────────────────────────────────────────────────────────────────────────────
+    const customData = {
+        "Study_For_Me_AI": "A Python-based AI study assistant that automatically generates answers from textual data for efficient learning.",
+        "ML-BASED-CAREER-COUINCLER": "A Streamlit-based career counselor that suggests job positions using OpenAI's GPT-3 model and generates report images with the PIL library.",
+        "Better_Song_reccomendetar_than_spotify": "A Python-based Spotify playlist generator that leverages audio feature analysis to automate personalized playlist creation through Spotipy integration.",
+        "My-AI-ML-Neural-net-and-Tensorflow-Study": "A Python-based TensorFlow study repository that provides step-by-step Jupyter notebooks for implementing neural networks and machine learning algorithms.",
+        "FILL_ME_UP": "A Python-based Streamlit application that generates Google Form responses for academic surveys using OpenAI's GPT-3.5-turbo LLM.",
+        "AI_to_attend_my_online_classes": "A Python-based AI assistant that automates online class attendance using voice recognition and chatbot interactions.",
+        "Chatterboii69": "A Python-based chatbot framework that processes user input using text recognition through CSV data analysis.",
+        "Eeman1113.github.io": "My personal portfolio website.",
+        "Generating-Art-using-AI": "A Python-based art generation tool that employs generative AI models to create digital artwork from the CC12M dataset.",
+        "Lenia_Python_Implementation": "A Python-based tutorial notebook that guides users through evolving from discrete to continuous cellular automata via interactive code modifications.",
+        "PyFlashlight": "A Python-based deep learning framework that implements GPU-accelerated automatic differentiation for educational implementation of tensor operations and neural network training.",
+        "LeapHigher": "A Python-based auto-clicker that automates solving coding platform challenges using OCR and UI interaction via screenshot capture and database-driven answer submission.",
+        "plant-monitoring-system-using-python-and-audrino": "A Python and Arduino-based plant monitoring system that tracks temperature and humidity using DHT11 sensors and generates real-time data visualizations.",
+        "dogs-Vs-cats-AI-": "A Python-based image classifier that differentiates dog and cat images using neural networks and deep learning.",
+        "Teaching-stuff": "A Python-based educational resource that teaches fundamental programming concepts through practical exercises.",
+        "digits-AI": "A Python-based digit recognition tool that identifies handwritten digits using machine learning via Scikit-learn.",
+        "MLFS": "A Machine Learning guidebook that teaches foundational concepts through step-by-step tutorials and visual examples.",
+        "Eeman": "A SketchUp-based architectural repository that provides house design models.",
+        "Face-tracker-cv3-": "A Python-based face tracker that detects faces in real-time using OpenCV 3 Haar cascade algorithm.",
+        "telegram-dog-bot": "A Python-based Telegram automation bot that sends random dog images in response to the /bop command.",
+        "AI-to-send-you-newspapers-from-a-randomly-made-up-world.": "A Python-based headline generator that creates fictional news articles from a simulated world using generative AI algorithms.",
+        "rat_bonk": "A Python-based game that implements rat-bonking mechanics through keyboard-controlled movement.",
+        "HackX": "A Python-based automation tool that automates online exam interactions.",
+        "Ampusee": "A book reader controllable with hand gesture recognition using computer vision through a webcam interface.",
+        "Morse-code": "A Python-based Morse code translator that converts text to Morse signals and decodes Morse sequences back to text.",
+        "playothello.online": "A pure HTML/CSS/JavaScript-based Othello game that enables real-time gameplay against AI opponents across three difficulty levels.",
+        "Examinee_AI": "A Streamlit-based question-answering application that generates answers using OpenAI's GPT-3 LLM API.",
+        "AI-to-make-wierd-spotify-playlists-": "A Python-based Jupyter Notebook that generates weird Spotify playlists using AI-driven algorithms.",
+        "QR_BASED_ATTENDANCE": "A Python-based QR attendance system that scans QR codes to track employee check-ins using automation.",
+        "word-2-word-level-transcription-and-forced-alignment-lip-sync-ultra-pro-max-2d-avatar": "A Python-based lip-syncing engine that generates synchronized 2D avatar animations through decibel-based audio processing and speech transcription.",
+        "CHEATCHINGU": "A Python-based OCR utility that extracts text from screenshots using computer vision techniques.",
+        "AI": "A Python-based AI implementation that provides simple machine learning functionality using basic algorithms.",
+        "Automated_Email_System-": "A Python-based automated email system that schedules and sends messages via SMTP automation.",
+        "The-AI-Based-Book-Generator": "An AI-powered book generator that produces narrative content using LLMs and machine learning algorithms.",
+        "detection-of-COVID-19-WITH-KERAS": "A x-ray analysis tool that detects COVID-19 using Keras-based convolutional neural networks for computer vision image classification.",
+        "bill-management": "A Python-based bill management tool that prints and saves restaurant invoices in text format.",
+        "seo": "A Python-based SEO toolkit that generates meta tags and sitemaps for improved search engine visibility.",
+        "OCR_for_SBI": "A Python-based OCR system for SBI that processes scanned documents using OpenCV and Tesseract for automated data extraction.",
+        "Chatbot_in_15_lines_GPT-3": "A Python-based chatbot that utilizes OpenAI's GPT-3 LLM to generate conversational responses in a concise 15-line Jupyter notebook.",
+        "AutoGitter": "A Python-based Git automation tool that efficiently manages and interacts with Git repositories.",
+        "DivineFinder": "A Python-based web application that enables religious search functionality using JSON data storage and HTML interfaces.",
+        "mg": "A Rust-based writing checker that detects weasel words, passive voice, duplicate words, and spelling errors.",
+        "Commit_Kar_Deta_Hun": "A Git-based repository that demonstrates basic commit operations using sequentially numbered text files.",
+        "Enahncing-Images-using-AI": "A Python-based image enhancement toolkit that leverages ESRGAN for AI-driven generative AI super-resolution.",
+        "Time_Bomb": "A JavaScript-based web application that simulates virtual file deletion upon timer expiration.",
+        "notion-like-ai-editor": "A Next.js-based collaborative text editor with Liveblocks real-time editing and LLM-powered AI content generation via Vercel AI SDK.",
+        "Ethindia23_PS": "A Python-based data processing utility that analyzes Ethereum transaction data from CSV files.",
+        "AI-writes-Articles": "A Python-based AI article generator that leverages GPU-accelerated language models to produce text from pre-trained vocabulary.",
+        "Github_Contributor_AI_Ver": "An AI-powered GitHub contributor analysis tool that identifies active contributors using machine learning.",
+        "Esoteric_Languages_Adventures": "A Brainfuck-based repository that provides esoteric programming examples for language adventures.",
+        "anius": "A Streamlit-based Python web application that enables anime streaming and search with embedded video players.",
+        "Machine-Learning-Study": "A Python-based educational repository for applied machine learning coursework featuring weekly Jupyter notebook modules implementing K-Nearest Neighbors classification.",
+        "NGO_Manager": "A Node.js-based volunteer management system that streamlines NGO volunteer coordination using PostgreSQL.",
+        "Length_Based_Video_Sorter": "A Python-based video sorter that sorts media files into duration-based folders using FFmpeg automation.",
+        "nextprompter": "A Python-based Next.js file processor that dynamically applies user prompts to generate modified code snippets.",
+        "JoJo": "A Python-based data analysis tool that processes and visualizes India's job market dataset.",
+        "Movie_Plotter_AI": "A Python-based movie plot generator that leverages AI language models to analyze text data and create narrative structures.",
+        "housefly": "A Python-based house layout generator that creates ASCII art representations of rooms.",
+        "Scrape_Me_Zaddy": "A Python-based web scraping automation tool that extracts text content from HTML elements via Streamlit.",
+        "readball": "A web-based retro-themed application that simulates football matches using real-time text-based commentary.",
+        "Python_To_English": "A Python-based NLP translator that converts Python code into natural English.",
+        "Medium-Articles-": "A static HTML blog platform that hosts machine learning tutorials and AI project showcases.",
+        "CNWGOL": "A web-based implementation of Conway's Game of Life that simulates cellular automaton evolution through interactive HTML canvas.",
+        "Chandler-Bing-Deep-Learning-AI": "A Python-based deep learning chatbot that implements conversational AI using LSTM neural networks in Jupyter Notebooks.",
+        "AI-that-chats-with-my-friends-": "A Rust-based chatbot that facilitates natural language conversations using NLP and artificial intelligence.",
+        "Noter": "A Python-based note-making application that generates comprehensive study materials using Streamlit and Groq LLM API.",
+        "Humaneyes": "A Python-based eye detection library using traditional computer vision techniques.",
+        "What-Should-I-make-Today": "A Python-based meal recommendation tool that generates daily cooking suggestions using an Indian food dataset.",
+        "Chetan-Bhagat-AI": "A Python-based AI generator that creates Chetan Bhagat-style prose using NLP and language models.",
+        "Story": "An extremely complicated multi-agent system that generates stories through recursive agent interactions and dynamic tool calling to create complex narratives.",
+        "rust_grammar": "A Rust-based grammar analysis library and REST API server that processes text for syntax errors and passive voice detection.",
+        "Artificial_Life": "A Python-based Conway's Game of Life simulation that models cellular automaton evolution using Pygame.",
+        "NNFS": "A Python-based neural network framework that executes sequential module operations through numbered script files.",
+        "huddler": "A Python-based agentic AI system for collaborative huddle meetings that utilizes RAG fusion to enhance real-time information retrieval.",
+        "AI-to-rate-my-AI-projects-": "A Python-based AI project rating tool that evaluates model quality using structured criteria through Jupyter Notebooks.",
+        "A2A_Experiments": "A Python-based agent-to-agent communication framework that enables two AI agents to interact through structured JSON configuration files.",
+        "Coding_Train": "A JavaScript-based coding project that collects interactive programming exercises inspired by the Coding Train.",
+        "mkme": "A command-line tool that suggests what to make.",
+        "Pyamagotchi": "A Python-based virtual pet game that simulates Tamagotchi care using turtle graphics and pygame.",
+        "AI_to_generate_sentences_from_words": "A Python-based AI-powered sentence generator that transforms keyword inputs into coherent natural language text using LLMs.",
+        "GODOT_Adventures": "A Godot-based game asset repository that provides customizable character models, scene scripts, and project configurations.",
+        "AI_Girlfriend": "A Machine Learning-based companion bot that simulates realistic human interactions using NLP and deep learning.",
+        "Gerne": "An interactive AI storytelling adventure where your imagination takes the lead — fantastical odyssey with whimsical scenarios powered by LLMs.",
+        "random-": "A Rust-based random number generator that produces cryptographically secure random values.",
+        "Kagaz": "A Groq LLM-integrated newspaper generator that creates plot-driven articles with AI-generated characters and locations.",
+        "type": "A JavaScript-based type system that validates data structures using ASCII character representations.",
+        "Earth": "A minimal static HTML website that serves Earth-themed content.",
+        "Wensday": "A personal AI project that demonstrates fundamental intelligence capabilities.",
+        "Valid_Kun": "A Python-based AI motivational companion that generates personalized motivational messages using OpenAI's LLMs.",
+        "Homeworker": "An agentic AI agent with tool calling that does homework automatically using LLMs.",
+        "Highlight": "A Next.js-based code diff visualizer that dynamically highlights text differences using Quill.js.",
+        "Commitment_iShoes": "A repository containing multiple README files for project documentation purposes.",
+        "ant_man": "A Python-based ant behavior simulation that models pheromone trail navigation and food-seeking dynamics using pygame.",
+        "Magic": "A Python-based utility that executes magical operations through scripted command execution.",
+        "Fun_With_Pandas": "A Python Jupyter Notebook that generates synthetic datasets using pandas for data science demonstration.",
+        "Hand_Ditto": "A TensorFlow-based handwriting synthesis tool that generates customizable SVG images from text using LSTM deep learning attention models.",
+        "flow_me_raho_bro": "A Next.js-based web application that analyzes data flows using sentiment analysis and interactive charting.",
+        "large-scale-energy-anomaly-detection": "A Python-based energy anomaly detection system that analyzes large-scale time-series data using machine learning.",
+        "sunnAI": "A Python-based music generation web application that leverages MusicGen generative AI models to create endless song content.",
+        "sootplane": "A static HTML website that presents a mind-related concept through minimalist design.",
+        "Work_for_manuscripts.ai": "A Python-based manuscript processing tool that automatically summarizes and paraphrases academic texts using LLMs.",
+        "SalvagedWeb": "A simple HTML-based web project providing basic website pages via static HTML and Markdown files.",
+        "agent_test": "A TypeScript-based full-stack agentic AI application that tests generative AI agents within a game environment using React and Node.js.",
+        "Some_Gen_Stuff": "A Python-based inference framework that implements DALL-E and Stable Diffusion generative AI pipelines for image generation.",
+        "Portfolio": "A MIT-licensed portfolio repository.",
+        "DEW": "A TensorFlow-based chatbot that leverages LSTM deep learning layers for intent recognition and natural language dialogue.",
+        "AutoCars": "A JavaScript-based autonomous traffic simulation engine that models urban traffic patterns using swarm intelligence for AI-driven vehicles.",
+        "veditor": "A Python-based intelligent video editing pipeline that automates content curation using voice activity detection, speech recognition, and LLM-driven semantic deduplication.",
+        "seascolor": "A Streamlit-based color analysis tool that classifies skin undertones through K-means clustering on image pixels using computer vision.",
+        "nativesee": "A Next.js-based PDF reader that enables hand gesture navigation using TensorFlow.js hand pose detection and computer vision.",
+        "Black-and-white-to-colour-photos": "A Python-based image converter that transforms black-and-white photographs into color using deep learning neural networks.",
+        "PrompterToolkit": "A Python Streamlit application that processes Next.js project files to generate prompt-enhanced output files.",
+        "Dinorant": "A reinforcement learning Q-learning based chrome dino game bot that optimizes gameplay strategies.",
+        "React-Text-Editor-Using-Quill.js": "A React-based text editor that utilizes Quill.js for rich text editing functionality.",
+        "The-Yolo-Bootcamp": "A YOLOv7 implementation that executes GPU-accelerated object detection using PyTorch for computer vision.",
+        "Procedural_Generation_Python": "A Python-based procedural generation toolkit that creates 3D terrain and cave systems using Perlin noise algorithms.",
+        "morphic-ai-answer-engine-generative-ui": "A Next.js-based AI-powered search engine integrating multiple generative AI LLM providers using Vercel AI SDK.",
+        "Resuwrite": "A Python-based AI novel generation system that transforms resume data into stories using specialized LLM chains and Groq language models.",
+        "yapnotes": "Speech-to-text note-taking application that captures audio and converts it into organized notes using NLP and audio processing.",
+        "Moon_Phase": "A Streamlit-based birthday moon phase calculator that computes lunar phase names and illumination percentages.",
+        "UniversalComponents": "A JavaScript-based health tracking application with modular components for diet, food database, and symptom monitoring.",
+        "PythonRSB": "A Python-based AI writing assistant that analyzes text for redundancy and readability using NLTK and Groq LLM API.",
+        "Pharma-Mart": "A Next.js application with Radix UI components and Tailwind CSS for responsive user interfaces.",
+        "Stable_Diffusion_App": "A Streamlit-based Stable Diffusion application that generates images from prompts using generative AI via Hugging Face diffusers.",
+        "Grammar_Engine": "A Haskell-based grammar engine that processes natural language syntax using HTTP APIs.",
+        "Generating-Animation-By-An-AI": "A Python-based animation generator that leverages VQGAN and CLIP generative AI for synthesizing video content from textual prompts.",
+        "eeja": "A responsive HTML/CSS/JavaScript portfolio site that dynamically displays looping video clips with fullscreen toggling.",
+        "WebGraphics": "A lightweight HTML/SVG-based web graphics toolkit for interactive graphical representations.",
+        "infiwrite": "A distraction-free writing web app — a blank void with soft noise. Just you and your words.",
+        "konflict": "A JavaScript-based news digest that aggregates RSS feeds to curate India-Pakistan conflict-focused articles.",
+        "Pokemon_Adventures": "A Tailwind-based web application that dynamically displays Pokemon data in a responsive grid with search.",
+        "TypeFaster": "A Python-based typing automation tool that uses Selenium and PyAutoGUI to simulate keyboard input for speed measurement.",
+        "Invest": "A web-based investment education game that visualizes financial trends using Chart.js.",
+        "Talkative_Docs": "Interactive document processor using Python.",
+        "anyoouhl": "A Streamlit-based RAG application that integrates Tavily web search with document processing to generate comprehensive AI responses.",
+        "janku_humaneyes": "A Next.js-based web application that integrates Python API endpoints to humanize AI text using NLP.",
+        "AI_Detector": "A Python-based AI detector that identifies AI-generated content using BERT model deep learning analysis.",
+        "LeapCode": "A Chrome extension that extracts LeetCode problem code into a CSV database using pandas, with Discord integration.",
+        "Leetcode": "A C++ solutions repository that provides implementations for Leetcode programming challenges.",
+        "Mario-RL-AI": "A Python-based reinforcement learning agent that navigates Super Mario levels using Q-learning.",
+        "Bookish": "A Streamlit-based book chapter generator that leverages OpenAI's LLM to produce 2000-word chapters from user-provided book details.",
+        "Anime-Synopsis-Generator-With-Deep-Learning": "A GPT-2-based deep learning Anime Synopsis Generator that produces AI-generated anime synopses.",
+        "Wirerio": "An agentic AI-powered web application that converts hand-drawn UI sketches into functional HTML/CSS/JS code using Google's Gemini LLM.",
+        "Sume_Kun": "A minimal GitHub repository.",
+        "Commitment_iShoes_2": "A versioned documentation system for tracking commitments.",
+        "Eeman1113": "A Streamlit-based portfolio website showcasing AI projects including YOLOv7 dog detection and ML-based career counseling.",
+        "High_Life": "PDF to study notes generator that processes PDF documents and generates structured study notes using LLMs.",
+        "AsciiCam": "A Streamlit-based webcam-to-ASCII converter that transforms live camera input into ASCII art using OpenCV.",
+        "Sell_Me_A_Thing_AI": "An AI-driven sales pitch generator that creates persuasive product descriptions using LLMs.",
+        "eemanGPT": "A Streamlit-based chat interface that integrates the Groq API to provide a conversational AI experience using the llama3-8b LLM.",
+        "Neyus": "A Python-based Streamlit application that scrapes news headlines from inshorts.com using BeautifulSoup web scraping.",
+        "The_Thing_Maker": "A Python-based generative AI tool that generates customizable objects.",
+        "black-and-white-videos-to-colour-": "A Python-based video colorization tool that converts black-and-white videos to color using deep learning neural networks.",
+        "Dawg": "A Streamlit-based object detection computer vision application using Hugging Face models.",
+        "Pathfinder": "A Streamlit-based file path finder that dynamically locates files within GitHub repositories.",
+        "I_Make_Notes": "CLI-based note-taking tool that processes user input into structured notes.",
+        "fintech": "A Llama LLM-based conversational AI model that generates fintech-specific text for financial applications.",
+        "calc": "A web-based unit economics calculator that dynamically computes business metrics using JavaScript.",
+        "lucida": "A minimalist HTML-based static website template.",
+        "sad": "A Python-based meditative text generator that uses Ollama LLM to produce adaptive language outputs.",
+        "Susu": "A Tailwind-based Sudoku puzzle generator that enables interactive puzzle creation and solving.",
+        "yjs_lexi": "A JavaScript-based lexer that tokenizes collaborative text using Yjs for real-time synchronization.",
+        "blahblah": "A minimal project repository.",
+        "JS_Interview": "JS Interview questions database.",
+        "how_we_act": "A Python-based town simulation with multiple agents leveraging Ollama LLM for cognitive interactions in a Pygame urban environment.",
+        "UC": "A Vite-based TypeScript React application with Shadcn/ui for monitoring Ulcerative Colitis symptoms via a dashboard.",
+        "day-scribe-essence": "A React/TypeScript diary application that integrates Supabase authentication and supports multimedia entries.",
+        "sci": "A CrewAI and LangGraph-integrated multi-agent agentic research platform that autonomously synthesizes academic reports through recursive web exploration.",
+        "dev-ee": "A Streamlit-based Python code editor that executes user-submitted code and displays runtime output.",
+        "Agentic_Description": "A multi-agent agentic system with tool calling to automatically generate descriptions for all repos in a CSV file.",
+        "evolve": "An evolution-based discovery model inspired by AlphaEvolve that utilizes adaptive genetic algorithms for optimized exploration.",
+        "Heartbeat": "A Python-based image processing utility that converts and optimizes photo gallery assets to WebP format.",
+        "gram": "A Rust-based grammar checker that detects weasel words, passive voice, and duplicate words using regex.",
+        "TATPILTM": "A static HTML-based web application that renders a basic homepage.",
+        "500_React_Interview_Questions": "A Streamlit-based React interview study web application with interactive flashcards and category filtering for 500 questions.",
+        "Rhythm": "A Next.js-based web application with Radix UI and Tailwind CSS for accessible, responsive interfaces.",
+        "The_Window": "A static HTML-based window manager that dynamically adjusts application layouts using CSS.",
+        "Prologue_Please": "A static HTML-based book store that displays inventory data from a CSV file.",
+        "_rvsp_": "A JavaScript-based speed reading application using Rapid Serial Visual Presentation (RSVP) technology.",
+        "Lump": "A JavaScript-based writing tool that integrates Quill.js with AI-powered LLM text suggestions.",
+        "test": "A static website that serves multiple HTML pages for testing purposes.",
+        "Planin": "A Node.js-based API proxy server that routes Notion API requests.",
+        "infinite": "A web-based discovery tool featuring network graph visualization with Vis.js and Tailwind CSS.",
+        "Interviewer": "A Python-based audio segmentation tool that extracts questions from an MP3 audio file.",
+        "EWITW": "A Python-based combinatorial generator that creates infinite CSV libraries containing all possible character sequences.",
+        "AutoDiscovery": "A Python-based multi-agent autonomous agentic research platform using Google Gemini LLM API and parallel agent collaboration to generate structured documentation.",
+        "likho": "A Next.js-based handwriting generator that converts text into realistic SVG outputs using an in-browser recurrent neural network.",
+        "AgeSci": "An autonomous multi-agent agentic system leveraging LLMs via Ollama to generate IEEE-format academic research papers with citations and LaTeX compilation.",
+        "Articles": "An AI-focused repository hosting Medium articles on artificial intelligence implementations and tutorials.",
+        "Sira": "A Python-based conversational agentic AI agent using FAISS vector search and sentence embeddings for RAG-based persistent memory, powered by Google Gemini LLM.",
+        "Orbit": "A static HTML-based website that challenges users through orbital mechanics.",
+        "Idaten_Jump": "A static HTML-based encyclopedia for the Idaten Jump series.",
+        "spellcheck": "A Rust-based spell checker implementing Peter Norvig's statistical algorithm for spell correction using n-grams.",
+        "is_shree_alive": "A static HTML website that serves a minimal page with an embedded image.",
+        "maze": "A HTML-based maze game that dynamically renders interactive pathways.",
+        "Hivemind": "A Python-based multi-agent agentic AI research system where specialized agents autonomously generate LaTeX-formatted research papers.",
+        "harp": "A Rust-based grammar checker delivering instant syntax verification through WebAssembly-optimized processing.",
+        "500_NodeJs_Interview_Questions": "A Streamlit-based Python application exploring 500 Node.js interview questions through category filtering and search.",
+        "Universal_Paperclips_Auto": "A Python-based Selenium automation bot that automates Paperclip trading interactions in a browser-based game.",
+        "BookVaccum": "A Python-based book downloader that retrieves Project Gutenberg eBooks in bulk using automation.",
+        "Last_Tea_Shop_Web": "A Tailwind CSS-based static website with interactive dice rollers and character sheets for tabletop RPG sessions.",
+        "blush": "A Streamlit-based skin tone analyzer that recommends blush colors based on facial analysis using OpenCV computer vision and clustering.",
+        "tetrisAI": "A JavaScript-based Tetris game that uses AI to dynamically optimize piece placement strategies.",
+        "humanize-ai": "A React-based text humanization platform using LLM to generate natural-sounding alternatives with Supabase auth and Stripe payments.",
+        "ConvergenceEngine": "Research paper on the trajectory of artificial intelligence — a compelling paradox in AI convergence.",
+        "Isabella": "A Python-based agentic AI interviewer that conducts interactive job candidate interviews using NLP and LLMs.",
+        "Around_Us": "A Cesium-powered web-based flight simulator with real-time 3D globe navigation and photorealistic terrain.",
+        "ADAS_Mobile": "A Python-based ADAS application providing real-time driving assistance using YOLOv8 object detection and computer vision lane tracking.",
+        "aegis": "AEGIS — Enterprise Security and Quarterly Regression Testing Platform. Self-hosted Streamlit dashboard with live AWS integration.",
+        "Parallel-Agent-Reinforcement-Learning-PARL-": "A multi-agent PARL-based agent swarm that uses reinforcement learning and dynamically creates specialized sub-agents to generate complete novels.",
+        "autofx": "A highly mathematical Python-based forex trading bot using technical indicators and machine learning for informed financial trading decisions.",
+        "Bday": "A Vite-powered React birthday website with GSAP animations and canvas-confetti celebration effects.",
+        "valentine": "A React-based Valentine's Day website with interactive heart animations using GSAP and Framer Motion.",
+        "investment-research-agent": "A Python-based agentic investment research agent orchestrating real-time market data, financial news, and SEC filings via Amazon Bedrock LLM.",
+        "Cube_King": "A Fodian game that challenges players to climb to 1000m.",
+        "Anime_Data_Science": "An anime data science project analyzing trends and preferences in anime content.",
+        "sumworry": "A shadcn/ui-based React application for interactive text and scientific data analysis with visualization dashboards.",
+        "home": "A Python-based local-first generative agentic agent framework enabling Ollama LLM-powered async interactions, 2D world modeling, and dialogue simulation.",
+        "Stethoscope": "A JavaScript-based web application that generates Git changelogs by connecting to GitHub and GitLab repositories.",
+        "Pokerguru": "A poker hand analysis tool evaluating hand strength and winning probabilities using combinatorial mathematics and machine learning.",
+        "Scholar": "A React-based agentic AI-powered writing workspace orchestrating multi-agent systems for academic research and citation management.",
+        "Trending": "A Python-based market trend analyzer aggregating AI-related news from RSS feeds to generate structured trend reports using LLMs and SQLite."
+    };
 
-            return Array.from(tags).slice(0, 3); // Max 3 tags for cleaner UI and to prevent vertical overflow
+    const GITHUB_USERNAME = 'Eeman1113';
+    let allProjects = [];
+    let activeFilter = null;
+
+    // ─────────────────────────────────────────────────────────────────────────────
+    // Filter + render helpers
+    // ─────────────────────────────────────────────────────────────────────────────
+    const FILTER_ORDER = [
+        'Multi-Agent','Agentic AI','RAG','LLM','Generative AI','RL',
+        'Deep Learning','Computer Vision','NLP','Machine Learning',
+        'Automation','Research','Audio','Finance','Game Dev','Web Dev','Data Science','Rust'
+    ];
+
+    function renderFilterRow(projects) {
+        const row = document.getElementById('filterRow');
+        const counts = {};
+        for (const p of projects) for (const t of p.tags) counts[t.id] = (counts[t.id] || 0) + 1;
+
+        row.innerHTML = '';
+        const allBtn = document.createElement('button');
+        allBtn.className = 'filter-btn' + (!activeFilter ? ' active' : '');
+        allBtn.textContent = 'All';
+        allBtn.onclick = () => { activeFilter = null; renderFilterRow(allProjects); renderProjects(getFiltered()); };
+        row.appendChild(allBtn);
+
+        for (const tagId of FILTER_ORDER) {
+            if (!counts[tagId]) continue;
+            const def = TAG_DEFINITIONS.find(d => d.id === tagId);
+            if (!def) continue;
+            const btn = document.createElement('button');
+            btn.className = 'filter-btn' + (activeFilter === tagId ? ' active' : '');
+            btn.innerHTML = `<span style="display:inline-flex;align-items:center;gap:4px;">${ICONS[tagId] || ''}${def.label}</span> <span style="opacity:0.45;margin-left:3px;">${counts[tagId]}</span>`;
+            btn.onclick = () => {
+                activeFilter = activeFilter === tagId ? null : tagId;
+                renderFilterRow(allProjects);
+                renderProjects(getFiltered());
+            };
+            row.appendChild(btn);
         }
 
-        async function fetchGitHubProjects() {
-            try {
-                let repos = [];
-                let page = 1;
-                let fetchMore = true;
+        row.classList.remove('hidden');
+    }
 
-                // Loop to fetch all pages of repos (GitHub limits to 100 per page)
-                while(fetchMore) {
-                    const response = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&page=${page}&sort=pushed`);
-                    if (!response.ok) throw new Error('Failed to fetch from GitHub');
-                    
-                    const data = await response.json();
-                    repos = repos.concat(data);
-                    
-                    if (data.length < 100) {
-                        fetchMore = false;
-                    } else {
-                        page++;
-                    }
-                }
-
-                // Process and Merge
-                allProjects = repos.map(repo => {
-                    // Inject our high-quality custom description if it exists, otherwise fallback to GitHub's
-                    let desc = customData[repo.name] || repo.description || "No description provided.";
-                    let tags = extractTags(repo.name, desc, repo.language);
-                    
-                    return {
-                        id: repo.id,
-                        name: repo.name,
-                        description: desc,
-                        url: repo.html_url,
-                        language: repo.language,
-                        tags: tags,
-                        stars: repo.stargazers_count,
-                        updated_at: new Date(repo.pushed_at || repo.updated_at)
-                    };
-                });
-
-                // Sort by recently updated
-                allProjects.sort((a, b) => b.updated_at - a.updated_at);
-
-                // Add in any projects from our custom list that might be private/missing from API
-                const apiRepoNames = new Set(allProjects.map(p => p.name));
-                for (const [name, desc] of Object.entries(customData)) {
-                    if (!apiRepoNames.has(name)) {
-                        allProjects.push({
-                            id: name,
-                            name: name,
-                            description: desc,
-                            url: `https://github.com/${GITHUB_USERNAME}/${name}`,
-                            language: null,
-                            tags: extractTags(name, desc, null),
-                            stars: 0,
-                            updated_at: new Date(0) // push to bottom
-                        });
-                    }
-                }
-
-                document.getElementById('loading').classList.add('hidden');
-                document.getElementById('projectGrid').classList.remove('hidden');
-                
-                renderProjects(allProjects);
-
-            } catch (error) {
-                console.error("Error fetching projects:", error);
-                document.getElementById('loading').innerHTML = `
-                    <div class="text-red-400 flex flex-col items-center">
-                        <svg class="w-8 h-8 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-                        <p>Failed to load from GitHub API.</p>
-                        <p class="text-xs text-neutral-500 mt-2">Rate limit might be exceeded.</p>
-                    </div>`;
-            }
-        }
-
-        function renderProjects(projects) {
-            const grid = document.getElementById('projectGrid');
-            const noResults = document.getElementById('noResults');
-            
-            grid.innerHTML = '';
-            
-            if (projects.length === 0) {
-                grid.classList.add('hidden');
-                noResults.classList.remove('hidden');
-                return;
-            } else {
-                grid.classList.remove('hidden');
-                noResults.classList.add('hidden');
-            }
-
-            projects.forEach(project => {
-                const langColor = languageColors[project.language] || 'bg-neutral-500';
-                
-                const card = document.createElement('a');
-                card.href = project.url;
-                card.target = '_blank';
-                card.className = 'project-card flex flex-col justify-between bg-neutral-900/30 border border-neutral-800 rounded-xl p-6 text-left group overflow-hidden';
-                
-                card.innerHTML = `
-                    <div class="flex flex-col flex-grow min-w-0">
-                        <div class="flex justify-between items-start mb-3 w-full">
-                            <h3 class="text-lg font-medium tracking-tight text-neutral-100 group-hover:text-white truncate pr-3" title="${project.name}">${project.name}</h3>
-                            <svg class="w-4 h-4 text-neutral-600 group-hover:text-white transition-colors shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                        </div>
-                        <p class="text-sm text-neutral-400 leading-relaxed line-clamp-3 mb-4">${project.description}</p>
-                        
-                        ${project.tags && project.tags.length > 0 ? `
-                        <div class="flex flex-wrap gap-2 mt-auto mb-1">
-                            ${project.tags.map(tag => `<span class="px-2 py-1 bg-neutral-800/60 border border-neutral-700/50 rounded-md text-[10px] text-neutral-300 font-medium tracking-wide uppercase shadow-sm whitespace-nowrap">${tag}</span>`).join('')}
-                        </div>
-                        ` : '<div class="mt-auto"></div>'}
-                    </div>
-                    
-                    <div class="mt-4 pt-4 border-t border-neutral-800/50 flex items-center justify-between text-xs text-neutral-500 font-medium shrink-0">
-                        <div class="flex items-center gap-2 truncate pr-2">
-                            ${project.language ? `<span class="w-2.5 h-2.5 rounded-full shrink-0 ${langColor}"></span><span class="truncate">${project.language}</span>` : '<span></span>'}
-                        </div>
-                        ${project.stars > 0 ? `<div class="flex items-center gap-1 shrink-0"><svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>${project.stars}</div>` : ''}
-                    </div>
-                `;
-                
-                grid.appendChild(card);
-            });
-        }
-
-        // Search Functionality
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-            const term = e.target.value.toLowerCase();
-            const filtered = allProjects.filter(p => 
-                p.name.toLowerCase().includes(term) || 
+    function getFiltered() {
+        const term = document.getElementById('searchInput').value.toLowerCase();
+        return allProjects.filter(p => {
+            const matchesSearch = !term ||
+                p.name.toLowerCase().includes(term) ||
                 p.description.toLowerCase().includes(term) ||
                 (p.language && p.language.toLowerCase().includes(term)) ||
-                (p.tags && p.tags.some(tag => tag.toLowerCase().includes(term)))
-            );
-            renderProjects(filtered);
+                p.tags.some(t => t.label.toLowerCase().includes(term) || t.id.toLowerCase().includes(term));
+            const matchesFilter = !activeFilter || p.tags.some(t => t.id === activeFilter);
+            return matchesSearch && matchesFilter;
         });
+    }
 
-        // Initialize App
-        fetchGitHubProjects();
+    // ─────────────────────────────────────────────────────────────────────────────
+    // GitHub fetch — original, untouched
+    // ─────────────────────────────────────────────────────────────────────────────
+    async function fetchGitHubProjects() {
+        try {
+            let repos = [];
+            let page = 1;
+            let fetchMore = true;
+
+            while (fetchMore) {
+                const response = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&page=${page}&sort=pushed`);
+                if (!response.ok) throw new Error('Failed to fetch from GitHub');
+                const data = await response.json();
+                repos = repos.concat(data);
+                if (data.length < 100) fetchMore = false;
+                else page++;
+            }
+
+            allProjects = repos.map(repo => {
+                const desc = customData[repo.name] || repo.description || "No description provided.";
+                return {
+                    id: repo.id,
+                    name: repo.name,
+                    description: desc,
+                    url: repo.html_url,
+                    language: repo.language,
+                    tags: extractTags(repo.name, desc, repo.language),
+                    stars: repo.stargazers_count,
+                    updated_at: new Date(repo.pushed_at || repo.updated_at)
+                };
+            });
+
+            allProjects.sort((a, b) => b.updated_at - a.updated_at);
+
+            const apiRepoNames = new Set(allProjects.map(p => p.name));
+            for (const [name, desc] of Object.entries(customData)) {
+                if (!apiRepoNames.has(name)) {
+                    allProjects.push({
+                        id: name, name, description: desc,
+                        url: `https://github.com/${GITHUB_USERNAME}/${name}`,
+                        language: null,
+                        tags: extractTags(name, desc, null),
+                        stars: 0, updated_at: new Date(0)
+                    });
+                }
+            }
+
+            // Stats
+            const agenticCount = allProjects.filter(p => p.tags.some(t => t.id === 'Agentic AI' || t.id === 'Multi-Agent')).length;
+            const llmCount = allProjects.filter(p => p.tags.some(t => t.id === 'LLM')).length;
+            document.getElementById('statTotal').textContent = `${allProjects.length} repositories`;
+            document.getElementById('statAgentic').textContent = `${agenticCount} agentic`;
+            document.getElementById('statLLM').textContent = `${llmCount} LLM`;
+            document.getElementById('statsBar').classList.remove('hidden');
+
+            document.getElementById('loading').classList.add('hidden');
+            document.getElementById('projectGrid').classList.remove('hidden');
+
+            renderFilterRow(allProjects);
+            renderProjects(allProjects);
+
+        } catch (error) {
+            console.error("Error fetching projects:", error);
+            document.getElementById('loading').innerHTML = `
+                <div class="text-red-400 flex flex-col items-center">
+                    <svg class="w-8 h-8 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    <p>Failed to load from GitHub API.</p>
+                    <p class="text-xs text-neutral-500 mt-2">Rate limit might be exceeded.</p>
+                </div>`;
+        }
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────────
+    // Render
+    // ─────────────────────────────────────────────────────────────────────────────
+    function renderProjects(projects) {
+        const grid = document.getElementById('projectGrid');
+        const noResults = document.getElementById('noResults');
+        grid.innerHTML = '';
+
+        if (projects.length === 0) {
+            grid.classList.add('hidden');
+            noResults.classList.remove('hidden');
+            return;
+        }
+        grid.classList.remove('hidden');
+        noResults.classList.add('hidden');
+
+        projects.forEach(project => {
+            const dotColor = languageColors[project.language] || '#737373';
+            const card = document.createElement('a');
+            card.href = project.url;
+            card.target = '_blank';
+            card.className = 'project-card flex flex-col justify-between bg-neutral-900/30 border border-neutral-800 rounded-xl p-6 text-left overflow-hidden';
+
+            const tagsHTML = project.tags.length > 0
+                ? `<div class="flex flex-wrap gap-1.5 mt-auto mb-1">
+                    ${project.tags.map(t => `<span style="display:inline-flex;align-items:center;gap:4px;padding:2px 7px;border-radius:5px;font-size:10px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;border:1px solid;white-space:nowrap;" class="${t.cls}">${ICONS[t.id] || ''}${t.label}</span>`).join('')}
+                   </div>`
+                : '<div class="mt-auto"></div>';
+
+            card.innerHTML = `
+                <div class="flex flex-col flex-grow min-w-0">
+                    <div class="flex justify-between items-start mb-3 w-full">
+                        <h3 class="text-base font-medium tracking-tight truncate pr-3" style="color:var(--text);" title="${project.name}">${project.name}</h3>
+                        <svg class="w-4 h-4 shrink-0 mt-0.5" style="color:var(--text-faint);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </div>
+                    <p class="text-sm leading-relaxed line-clamp-3 mb-4" style="color:var(--text-muted);">${project.description}</p>
+                    ${tagsHTML}
+                </div>
+                <div class="mt-4 pt-4 flex items-center justify-between text-xs font-medium shrink-0" style="border-top:1px solid var(--border);color:var(--text-subtle);">
+                    <div class="flex items-center gap-2 truncate pr-2">
+                        ${project.language ? `<span style="width:10px;height:10px;border-radius:50%;display:inline-block;flex-shrink:0;background:${dotColor};"></span><span class="truncate">${project.language}</span>` : ''}
+                    </div>
+                    ${project.stars > 0 ? `<div class="flex items-center gap-1 shrink-0"><svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>${project.stars}</div>` : ''}
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    // Search
+    document.getElementById('searchInput').addEventListener('input', () => renderProjects(getFiltered()));
+
+    // Boot
+    fetchGitHubProjects();
     </script>
 </body>
 </html>
