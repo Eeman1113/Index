@@ -300,237 +300,52 @@
         "Jupyter Notebook": "#fb923c", "Shell": "#4ade80", "GDScript": "#2563eb", "Haskell": "#a855f7"
     };
 
-    // ─────────────────────────────────────────────────────────────────────────────
-    // Custom descriptions
-    // ─────────────────────────────────────────────────────────────────────────────
-    const customData = {
-        "Study_For_Me_AI": "A Python-based AI study assistant that automatically generates answers from textual data for efficient learning.",
-        "ML-BASED-CAREER-COUINCLER": "A Streamlit-based career counselor that suggests job positions using OpenAI's GPT-3 model and generates report images with the PIL library.",
-        "Better_Song_reccomendetar_than_spotify": "A Python-based Spotify playlist generator that leverages audio feature analysis to automate personalized playlist creation through Spotipy integration.",
-        "My-AI-ML-Neural-net-and-Tensorflow-Study": "A Python-based TensorFlow study repository that provides step-by-step Jupyter notebooks for implementing neural networks and machine learning algorithms.",
-        "FILL_ME_UP": "A Python-based Streamlit application that generates Google Form responses for academic surveys using OpenAI's GPT-3.5-turbo LLM.",
-        "AI_to_attend_my_online_classes": "A Python-based AI assistant that automates online class attendance using voice recognition and chatbot interactions.",
-        "Chatterboii69": "A Python-based chatbot framework that processes user input using text recognition through CSV data analysis.",
-        "Eeman1113.github.io": "My personal portfolio website.",
-        "Generating-Art-using-AI": "A Python-based art generation tool that employs generative AI models to create digital artwork from the CC12M dataset.",
-        "Lenia_Python_Implementation": "A Python-based tutorial notebook that guides users through evolving from discrete to continuous cellular automata via interactive code modifications.",
-        "PyFlashlight": "A Python-based deep learning framework that implements GPU-accelerated automatic differentiation for educational implementation of tensor operations and neural network training.",
-        "LeapHigher": "A Python-based auto-clicker that automates solving coding platform challenges using OCR and UI interaction via screenshot capture and database-driven answer submission.",
-        "plant-monitoring-system-using-python-and-audrino": "A Python and Arduino-based plant monitoring system that tracks temperature and humidity using DHT11 sensors and generates real-time data visualizations.",
-        "dogs-Vs-cats-AI-": "A Python-based image classifier that differentiates dog and cat images using neural networks and deep learning.",
-        "Teaching-stuff": "A Python-based educational resource that teaches fundamental programming concepts through practical exercises.",
-        "digits-AI": "A Python-based digit recognition tool that identifies handwritten digits using machine learning via Scikit-learn.",
-        "MLFS": "A Machine Learning guidebook that teaches foundational concepts through step-by-step tutorials and visual examples.",
-        "Eeman": "A SketchUp-based architectural repository that provides house design models.",
-        "Face-tracker-cv3-": "A Python-based face tracker that detects faces in real-time using OpenCV 3 Haar cascade algorithm.",
-        "telegram-dog-bot": "A Python-based Telegram automation bot that sends random dog images in response to the /bop command.",
-        "AI-to-send-you-newspapers-from-a-randomly-made-up-world.": "A Python-based headline generator that creates fictional news articles from a simulated world using generative AI algorithms.",
-        "rat_bonk": "A Python-based game that implements rat-bonking mechanics through keyboard-controlled movement.",
-        "HackX": "A Python-based automation tool that automates online exam interactions.",
-        "Ampusee": "A book reader controllable with hand gesture recognition using computer vision through a webcam interface.",
-        "Morse-code": "A Python-based Morse code translator that converts text to Morse signals and decodes Morse sequences back to text.",
-        "playothello.online": "A pure HTML/CSS/JavaScript-based Othello game that enables real-time gameplay against AI opponents across three difficulty levels.",
-        "Examinee_AI": "A Streamlit-based question-answering application that generates answers using OpenAI's GPT-3 LLM API.",
-        "AI-to-make-wierd-spotify-playlists-": "A Python-based Jupyter Notebook that generates weird Spotify playlists using AI-driven algorithms.",
-        "QR_BASED_ATTENDANCE": "A Python-based QR attendance system that scans QR codes to track employee check-ins using automation.",
-        "word-2-word-level-transcription-and-forced-alignment-lip-sync-ultra-pro-max-2d-avatar": "A Python-based lip-syncing engine that generates synchronized 2D avatar animations through decibel-based audio processing and speech transcription.",
-        "CHEATCHINGU": "A Python-based OCR utility that extracts text from screenshots using computer vision techniques.",
-        "AI": "A Python-based AI implementation that provides simple machine learning functionality using basic algorithms.",
-        "Automated_Email_System-": "A Python-based automated email system that schedules and sends messages via SMTP automation.",
-        "The-AI-Based-Book-Generator": "An AI-powered book generator that produces narrative content using LLMs and machine learning algorithms.",
-        "detection-of-COVID-19-WITH-KERAS": "A x-ray analysis tool that detects COVID-19 using Keras-based convolutional neural networks for computer vision image classification.",
-        "bill-management": "A Python-based bill management tool that prints and saves restaurant invoices in text format.",
-        "seo": "A Python-based SEO toolkit that generates meta tags and sitemaps for improved search engine visibility.",
-        "OCR_for_SBI": "A Python-based OCR system for SBI that processes scanned documents using OpenCV and Tesseract for automated data extraction.",
-        "Chatbot_in_15_lines_GPT-3": "A Python-based chatbot that utilizes OpenAI's GPT-3 LLM to generate conversational responses in a concise 15-line Jupyter notebook.",
-        "AutoGitter": "A Python-based Git automation tool that efficiently manages and interacts with Git repositories.",
-        "DivineFinder": "A Python-based web application that enables religious search functionality using JSON data storage and HTML interfaces.",
-        "mg": "A Rust-based writing checker that detects weasel words, passive voice, duplicate words, and spelling errors.",
-        "Commit_Kar_Deta_Hun": "A Git-based repository that demonstrates basic commit operations using sequentially numbered text files.",
-        "Enahncing-Images-using-AI": "A Python-based image enhancement toolkit that leverages ESRGAN for AI-driven generative AI super-resolution.",
-        "Time_Bomb": "A JavaScript-based web application that simulates virtual file deletion upon timer expiration.",
-        "notion-like-ai-editor": "A Next.js-based collaborative text editor with Liveblocks real-time editing and LLM-powered AI content generation via Vercel AI SDK.",
-        "Ethindia23_PS": "A Python-based data processing utility that analyzes Ethereum transaction data from CSV files.",
-        "AI-writes-Articles": "A Python-based AI article generator that leverages GPU-accelerated language models to produce text from pre-trained vocabulary.",
-        "Github_Contributor_AI_Ver": "An AI-powered GitHub contributor analysis tool that identifies active contributors using machine learning.",
-        "Esoteric_Languages_Adventures": "A Brainfuck-based repository that provides esoteric programming examples for language adventures.",
-        "anius": "A Streamlit-based Python web application that enables anime streaming and search with embedded video players.",
-        "Machine-Learning-Study": "A Python-based educational repository for applied machine learning coursework featuring weekly Jupyter notebook modules implementing K-Nearest Neighbors classification.",
-        "NGO_Manager": "A Node.js-based volunteer management system that streamlines NGO volunteer coordination using PostgreSQL.",
-        "Length_Based_Video_Sorter": "A Python-based video sorter that sorts media files into duration-based folders using FFmpeg automation.",
-        "nextprompter": "A Python-based Next.js file processor that dynamically applies user prompts to generate modified code snippets.",
-        "JoJo": "A Python-based data analysis tool that processes and visualizes India's job market dataset.",
-        "Movie_Plotter_AI": "A Python-based movie plot generator that leverages AI language models to analyze text data and create narrative structures.",
-        "housefly": "A Python-based house layout generator that creates ASCII art representations of rooms.",
-        "Scrape_Me_Zaddy": "A Python-based web scraping automation tool that extracts text content from HTML elements via Streamlit.",
-        "readball": "A web-based retro-themed application that simulates football matches using real-time text-based commentary.",
-        "Python_To_English": "A Python-based NLP translator that converts Python code into natural English.",
-        "Medium-Articles-": "A static HTML blog platform that hosts machine learning tutorials and AI project showcases.",
-        "CNWGOL": "A web-based implementation of Conway's Game of Life that simulates cellular automaton evolution through interactive HTML canvas.",
-        "Chandler-Bing-Deep-Learning-AI": "A Python-based deep learning chatbot that implements conversational AI using LSTM neural networks in Jupyter Notebooks.",
-        "AI-that-chats-with-my-friends-": "A Rust-based chatbot that facilitates natural language conversations using NLP and artificial intelligence.",
-        "Noter": "A Python-based note-making application that generates comprehensive study materials using Streamlit and Groq LLM API.",
-        "Humaneyes": "A Python-based eye detection library using traditional computer vision techniques.",
-        "What-Should-I-make-Today": "A Python-based meal recommendation tool that generates daily cooking suggestions using an Indian food dataset.",
-        "Chetan-Bhagat-AI": "A Python-based AI generator that creates Chetan Bhagat-style prose using NLP and language models.",
-        "Story": "An extremely complicated multi-agent system that generates stories through recursive agent interactions and dynamic tool calling to create complex narratives.",
-        "rust_grammar": "A Rust-based grammar analysis library and REST API server that processes text for syntax errors and passive voice detection.",
-        "Artificial_Life": "A Python-based Conway's Game of Life simulation that models cellular automaton evolution using Pygame.",
-        "NNFS": "A Python-based neural network framework that executes sequential module operations through numbered script files.",
-        "huddler": "A Python-based agentic AI system for collaborative huddle meetings that utilizes RAG fusion to enhance real-time information retrieval.",
-        "AI-to-rate-my-AI-projects-": "A Python-based AI project rating tool that evaluates model quality using structured criteria through Jupyter Notebooks.",
-        "A2A_Experiments": "A Python-based agent-to-agent communication framework that enables two AI agents to interact through structured JSON configuration files.",
-        "Coding_Train": "A JavaScript-based coding project that collects interactive programming exercises inspired by the Coding Train.",
-        "mkme": "A command-line tool that suggests what to make.",
-        "Pyamagotchi": "A Python-based virtual pet game that simulates Tamagotchi care using turtle graphics and pygame.",
-        "AI_to_generate_sentences_from_words": "A Python-based AI-powered sentence generator that transforms keyword inputs into coherent natural language text using LLMs.",
-        "GODOT_Adventures": "A Godot-based game asset repository that provides customizable character models, scene scripts, and project configurations.",
-        "AI_Girlfriend": "A Machine Learning-based companion bot that simulates realistic human interactions using NLP and deep learning.",
-        "Gerne": "An interactive AI storytelling adventure where your imagination takes the lead — fantastical odyssey with whimsical scenarios powered by LLMs.",
-        "random-": "A Rust-based random number generator that produces cryptographically secure random values.",
-        "Kagaz": "A Groq LLM-integrated newspaper generator that creates plot-driven articles with AI-generated characters and locations.",
-        "type": "A JavaScript-based type system that validates data structures using ASCII character representations.",
-        "Earth": "A minimal static HTML website that serves Earth-themed content.",
-        "Wensday": "A personal AI project that demonstrates fundamental intelligence capabilities.",
-        "Valid_Kun": "A Python-based AI motivational companion that generates personalized motivational messages using OpenAI's LLMs.",
-        "Homeworker": "An agentic AI agent with tool calling that does homework automatically using LLMs.",
-        "Highlight": "A Next.js-based code diff visualizer that dynamically highlights text differences using Quill.js.",
-        "Commitment_iShoes": "A repository containing multiple README files for project documentation purposes.",
-        "ant_man": "A Python-based ant behavior simulation that models pheromone trail navigation and food-seeking dynamics using pygame.",
-        "Magic": "A Python-based utility that executes magical operations through scripted command execution.",
-        "Fun_With_Pandas": "A Python Jupyter Notebook that generates synthetic datasets using pandas for data science demonstration.",
-        "Hand_Ditto": "A TensorFlow-based handwriting synthesis tool that generates customizable SVG images from text using LSTM deep learning attention models.",
-        "flow_me_raho_bro": "A Next.js-based web application that analyzes data flows using sentiment analysis and interactive charting.",
-        "large-scale-energy-anomaly-detection": "A Python-based energy anomaly detection system that analyzes large-scale time-series data using machine learning.",
-        "sunnAI": "A Python-based music generation web application that leverages MusicGen generative AI models to create endless song content.",
-        "sootplane": "A static HTML website that presents a mind-related concept through minimalist design.",
-        "Work_for_manuscripts.ai": "A Python-based manuscript processing tool that automatically summarizes and paraphrases academic texts using LLMs.",
-        "SalvagedWeb": "A simple HTML-based web project providing basic website pages via static HTML and Markdown files.",
-        "agent_test": "A TypeScript-based full-stack agentic AI application that tests generative AI agents within a game environment using React and Node.js.",
-        "Some_Gen_Stuff": "A Python-based inference framework that implements DALL-E and Stable Diffusion generative AI pipelines for image generation.",
-        "Portfolio": "A MIT-licensed portfolio repository.",
-        "DEW": "A TensorFlow-based chatbot that leverages LSTM deep learning layers for intent recognition and natural language dialogue.",
-        "AutoCars": "A JavaScript-based autonomous traffic simulation engine that models urban traffic patterns using swarm intelligence for AI-driven vehicles.",
-        "veditor": "A Python-based intelligent video editing pipeline that automates content curation using voice activity detection, speech recognition, and LLM-driven semantic deduplication.",
-        "seascolor": "A Streamlit-based color analysis tool that classifies skin undertones through K-means clustering on image pixels using computer vision.",
-        "nativesee": "A Next.js-based PDF reader that enables hand gesture navigation using TensorFlow.js hand pose detection and computer vision.",
-        "Black-and-white-to-colour-photos": "A Python-based image converter that transforms black-and-white photographs into color using deep learning neural networks.",
-        "PrompterToolkit": "A Python Streamlit application that processes Next.js project files to generate prompt-enhanced output files.",
-        "Dinorant": "A reinforcement learning Q-learning based chrome dino game bot that optimizes gameplay strategies.",
-        "React-Text-Editor-Using-Quill.js": "A React-based text editor that utilizes Quill.js for rich text editing functionality.",
-        "The-Yolo-Bootcamp": "A YOLOv7 implementation that executes GPU-accelerated object detection using PyTorch for computer vision.",
-        "Procedural_Generation_Python": "A Python-based procedural generation toolkit that creates 3D terrain and cave systems using Perlin noise algorithms.",
-        "morphic-ai-answer-engine-generative-ui": "A Next.js-based AI-powered search engine integrating multiple generative AI LLM providers using Vercel AI SDK.",
-        "Resuwrite": "A Python-based AI novel generation system that transforms resume data into stories using specialized LLM chains and Groq language models.",
-        "yapnotes": "Speech-to-text note-taking application that captures audio and converts it into organized notes using NLP and audio processing.",
-        "Moon_Phase": "A Streamlit-based birthday moon phase calculator that computes lunar phase names and illumination percentages.",
-        "UniversalComponents": "A JavaScript-based health tracking application with modular components for diet, food database, and symptom monitoring.",
-        "PythonRSB": "A Python-based AI writing assistant that analyzes text for redundancy and readability using NLTK and Groq LLM API.",
-        "Pharma-Mart": "A Next.js application with Radix UI components and Tailwind CSS for responsive user interfaces.",
-        "Stable_Diffusion_App": "A Streamlit-based Stable Diffusion application that generates images from prompts using generative AI via Hugging Face diffusers.",
-        "Grammar_Engine": "A Haskell-based grammar engine that processes natural language syntax using HTTP APIs.",
-        "Generating-Animation-By-An-AI": "A Python-based animation generator that leverages VQGAN and CLIP generative AI for synthesizing video content from textual prompts.",
-        "eeja": "A responsive HTML/CSS/JavaScript portfolio site that dynamically displays looping video clips with fullscreen toggling.",
-        "WebGraphics": "A lightweight HTML/SVG-based web graphics toolkit for interactive graphical representations.",
-        "infiwrite": "A distraction-free writing web app — a blank void with soft noise. Just you and your words.",
-        "konflict": "A JavaScript-based news digest that aggregates RSS feeds to curate India-Pakistan conflict-focused articles.",
-        "Pokemon_Adventures": "A Tailwind-based web application that dynamically displays Pokemon data in a responsive grid with search.",
-        "TypeFaster": "A Python-based typing automation tool that uses Selenium and PyAutoGUI to simulate keyboard input for speed measurement.",
-        "Invest": "A web-based investment education game that visualizes financial trends using Chart.js.",
-        "Talkative_Docs": "Interactive document processor using Python.",
-        "anyoouhl": "A Streamlit-based RAG application that integrates Tavily web search with document processing to generate comprehensive AI responses.",
-        "janku_humaneyes": "A Next.js-based web application that integrates Python API endpoints to humanize AI text using NLP.",
-        "AI_Detector": "A Python-based AI detector that identifies AI-generated content using BERT model deep learning analysis.",
-        "LeapCode": "A Chrome extension that extracts LeetCode problem code into a CSV database using pandas, with Discord integration.",
-        "Leetcode": "A C++ solutions repository that provides implementations for Leetcode programming challenges.",
-        "Mario-RL-AI": "A Python-based reinforcement learning agent that navigates Super Mario levels using Q-learning.",
-        "Bookish": "A Streamlit-based book chapter generator that leverages OpenAI's LLM to produce 2000-word chapters from user-provided book details.",
-        "Anime-Synopsis-Generator-With-Deep-Learning": "A GPT-2-based deep learning Anime Synopsis Generator that produces AI-generated anime synopses.",
-        "Wirerio": "An agentic AI-powered web application that converts hand-drawn UI sketches into functional HTML/CSS/JS code using Google's Gemini LLM.",
-        "Sume_Kun": "A minimal GitHub repository.",
-        "Commitment_iShoes_2": "A versioned documentation system for tracking commitments.",
-        "Eeman1113": "A Streamlit-based portfolio website showcasing AI projects including YOLOv7 dog detection and ML-based career counseling.",
-        "High_Life": "PDF to study notes generator that processes PDF documents and generates structured study notes using LLMs.",
-        "AsciiCam": "A Streamlit-based webcam-to-ASCII converter that transforms live camera input into ASCII art using OpenCV.",
-        "Sell_Me_A_Thing_AI": "An AI-driven sales pitch generator that creates persuasive product descriptions using LLMs.",
-        "eemanGPT": "A Streamlit-based chat interface that integrates the Groq API to provide a conversational AI experience using the llama3-8b LLM.",
-        "Neyus": "A Python-based Streamlit application that scrapes news headlines from inshorts.com using BeautifulSoup web scraping.",
-        "The_Thing_Maker": "A Python-based generative AI tool that generates customizable objects.",
-        "black-and-white-videos-to-colour-": "A Python-based video colorization tool that converts black-and-white videos to color using deep learning neural networks.",
-        "Dawg": "A Streamlit-based object detection computer vision application using Hugging Face models.",
-        "Pathfinder": "A Streamlit-based file path finder that dynamically locates files within GitHub repositories.",
-        "I_Make_Notes": "CLI-based note-taking tool that processes user input into structured notes.",
-        "fintech": "A Llama LLM-based conversational AI model that generates fintech-specific text for financial applications.",
-        "calc": "A web-based unit economics calculator that dynamically computes business metrics using JavaScript.",
-        "lucida": "A minimalist HTML-based static website template.",
-        "sad": "A Python-based meditative text generator that uses Ollama LLM to produce adaptive language outputs.",
-        "Susu": "A Tailwind-based Sudoku puzzle generator that enables interactive puzzle creation and solving.",
-        "yjs_lexi": "A JavaScript-based lexer that tokenizes collaborative text using Yjs for real-time synchronization.",
-        "blahblah": "A minimal project repository.",
-        "JS_Interview": "JS Interview questions database.",
-        "how_we_act": "A Python-based town simulation with multiple agents leveraging Ollama LLM for cognitive interactions in a Pygame urban environment.",
-        "UC": "A Vite-based TypeScript React application with Shadcn/ui for monitoring Ulcerative Colitis symptoms via a dashboard.",
-        "day-scribe-essence": "A React/TypeScript diary application that integrates Supabase authentication and supports multimedia entries.",
-        "sci": "A CrewAI and LangGraph-integrated multi-agent agentic research platform that autonomously synthesizes academic reports through recursive web exploration.",
-        "dev-ee": "A Streamlit-based Python code editor that executes user-submitted code and displays runtime output.",
-        "Agentic_Description": "A multi-agent agentic system with tool calling to automatically generate descriptions for all repos in a CSV file.",
-        "evolve": "An evolution-based discovery model inspired by AlphaEvolve that utilizes adaptive genetic algorithms for optimized exploration.",
-        "Heartbeat": "A Python-based image processing utility that converts and optimizes photo gallery assets to WebP format.",
-        "gram": "A Rust-based grammar checker that detects weasel words, passive voice, and duplicate words using regex.",
-        "TATPILTM": "A static HTML-based web application that renders a basic homepage.",
-        "500_React_Interview_Questions": "A Streamlit-based React interview study web application with interactive flashcards and category filtering for 500 questions.",
-        "Rhythm": "A Next.js-based web application with Radix UI and Tailwind CSS for accessible, responsive interfaces.",
-        "The_Window": "A static HTML-based window manager that dynamically adjusts application layouts using CSS.",
-        "Prologue_Please": "A static HTML-based book store that displays inventory data from a CSV file.",
-        "_rvsp_": "A JavaScript-based speed reading application using Rapid Serial Visual Presentation (RSVP) technology.",
-        "Lump": "A JavaScript-based writing tool that integrates Quill.js with AI-powered LLM text suggestions.",
-        "test": "A static website that serves multiple HTML pages for testing purposes.",
-        "Planin": "A Node.js-based API proxy server that routes Notion API requests.",
-        "infinite": "A web-based discovery tool featuring network graph visualization with Vis.js and Tailwind CSS.",
-        "Interviewer": "A Python-based audio segmentation tool that extracts questions from an MP3 audio file.",
-        "EWITW": "A Python-based combinatorial generator that creates infinite CSV libraries containing all possible character sequences.",
-        "AutoDiscovery": "A Python-based multi-agent autonomous agentic research platform using Google Gemini LLM API and parallel agent collaboration to generate structured documentation.",
-        "likho": "A Next.js-based handwriting generator that converts text into realistic SVG outputs using an in-browser recurrent neural network.",
-        "AgeSci": "An autonomous multi-agent agentic system leveraging LLMs via Ollama to generate IEEE-format academic research papers with citations and LaTeX compilation.",
-        "Articles": "An AI-focused repository hosting Medium articles on artificial intelligence implementations and tutorials.",
-        "Sira": "A Python-based conversational agentic AI agent using FAISS vector search and sentence embeddings for RAG-based persistent memory, powered by Google Gemini LLM.",
-        "Orbit": "A static HTML-based website that challenges users through orbital mechanics.",
-        "Idaten_Jump": "A static HTML-based encyclopedia for the Idaten Jump series.",
-        "spellcheck": "A Rust-based spell checker implementing Peter Norvig's statistical algorithm for spell correction using n-grams.",
-        "is_shree_alive": "A static HTML website that serves a minimal page with an embedded image.",
-        "maze": "A HTML-based maze game that dynamically renders interactive pathways.",
-        "Hivemind": "A Python-based multi-agent agentic AI research system where specialized agents autonomously generate LaTeX-formatted research papers.",
-        "harp": "A Rust-based grammar checker delivering instant syntax verification through WebAssembly-optimized processing.",
-        "500_NodeJs_Interview_Questions": "A Streamlit-based Python application exploring 500 Node.js interview questions through category filtering and search.",
-        "Universal_Paperclips_Auto": "A Python-based Selenium automation bot that automates Paperclip trading interactions in a browser-based game.",
-        "BookVaccum": "A Python-based book downloader that retrieves Project Gutenberg eBooks in bulk using automation.",
-        "Last_Tea_Shop_Web": "A Tailwind CSS-based static website with interactive dice rollers and character sheets for tabletop RPG sessions.",
-        "blush": "A Streamlit-based skin tone analyzer that recommends blush colors based on facial analysis using OpenCV computer vision and clustering.",
-        "tetrisAI": "A JavaScript-based Tetris game that uses AI to dynamically optimize piece placement strategies.",
-        "humanize-ai": "A React-based text humanization platform using LLM to generate natural-sounding alternatives with Supabase auth and Stripe payments.",
-        "ConvergenceEngine": "Research paper on the trajectory of artificial intelligence — a compelling paradox in AI convergence.",
-        "Isabella": "A Python-based agentic AI interviewer that conducts interactive job candidate interviews using NLP and LLMs.",
-        "Around_Us": "A Cesium-powered web-based flight simulator with real-time 3D globe navigation and photorealistic terrain.",
-        "ADAS_Mobile": "A Python-based ADAS application providing real-time driving assistance using YOLOv8 object detection and computer vision lane tracking.",
-        "aegis": "AEGIS — Enterprise Security and Quarterly Regression Testing Platform. Self-hosted Streamlit dashboard with live AWS integration.",
-        "Parallel-Agent-Reinforcement-Learning-PARL-": "A multi-agent PARL-based agent swarm that uses reinforcement learning and dynamically creates specialized sub-agents to generate complete novels.",
-        "autofx": "A highly mathematical Python-based forex trading bot using technical indicators and machine learning for informed financial trading decisions.",
-        "Bday": "A Vite-powered React birthday website with GSAP animations and canvas-confetti celebration effects.",
-        "valentine": "A React-based Valentine's Day website with interactive heart animations using GSAP and Framer Motion.",
-        "investment-research-agent": "A Python-based agentic investment research agent orchestrating real-time market data, financial news, and SEC filings via Amazon Bedrock LLM.",
-        "Cube_King": "A Fodian game that challenges players to climb to 1000m.",
-        "Anime_Data_Science": "An anime data science project analyzing trends and preferences in anime content.",
-        "sumworry": "A shadcn/ui-based React application for interactive text and scientific data analysis with visualization dashboards.",
-        "home": "A Python-based local-first generative agentic agent framework enabling Ollama LLM-powered async interactions, 2D world modeling, and dialogue simulation.",
-        "Stethoscope": "A JavaScript-based web application that generates Git changelogs by connecting to GitHub and GitLab repositories.",
-        "Pokerguru": "A poker hand analysis tool evaluating hand strength and winning probabilities using combinatorial mathematics and machine learning.",
-        "Scholar": "A React-based agentic AI-powered writing workspace orchestrating multi-agent systems for academic research and citation management.",
-        "Trending": "A Python-based market trend analyzer aggregating AI-related news from RSS feeds to generate structured trend reports using LLMs and SQLite."
-    };
-
     const GITHUB_USERNAME = 'Eeman1113';
     let allProjects = [];
     let activeFilter = null;
+    let customData = {};
+
+    // ─────────────────────────────────────────────────────────────────────────────
+    // CSV loader — fetches ./decp.csv and populates customData {repoName: desc}
+    // Handles quoted fields so commas inside descriptions work correctly.
+    // ─────────────────────────────────────────────────────────────────────────────
+    async function loadCustomData() {
+        try {
+            const res = await fetch('./decp.csv');
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            const text = await res.text();
+            const lines = text.trim().split('\n');
+            // Skip header row (Repo Name,Description)
+            for (let i = 1; i < lines.length; i++) {
+                const line = lines[i].trim();
+                if (!line) continue;
+                // Robust CSV parse: handle optional quoting on each field
+                let name, desc;
+                if (line.startsWith('"')) {
+                    // Quoted first field
+                    const m = line.match(/^"((?:[^"]|"")*)"\s*,\s*([\s\S]*)$/);
+                    if (!m) continue;
+                    name = m[1].replace(/""/g, '"');
+                    desc = m[2].startsWith('"')
+                        ? m[2].replace(/^"|"$/g, '').replace(/""/g, '"')
+                        : m[2];
+                } else {
+                    // Unquoted first field — split on first comma only
+                    const comma = line.indexOf(',');
+                    if (comma === -1) continue;
+                    name = line.slice(0, comma).trim();
+                    const rest = line.slice(comma + 1).trim();
+                    desc = rest.startsWith('"')
+                        ? rest.replace(/^"|"$/g, '').replace(/""/g, '"')
+                        : rest;
+                }
+                if (name && desc) customData[name] = desc;
+            }
+            console.log(`Loaded ${Object.keys(customData).length} descriptions from decp.csv`);
+        } catch (e) {
+            console.warn('Could not load decp.csv:', e.message);
+        }
+    }
 
     // ─────────────────────────────────────────────────────────────────────────────
     // Filter + render helpers
@@ -708,8 +523,8 @@
     // Search
     document.getElementById('searchInput').addEventListener('input', () => renderProjects(getFiltered()));
 
-    // Boot
-    fetchGitHubProjects();
+    // Boot — load CSV descriptions first, then fetch GitHub
+    loadCustomData().then(() => fetchGitHubProjects());
     </script>
 </body>
 </html>
