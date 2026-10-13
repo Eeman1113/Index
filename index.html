@@ -122,6 +122,20 @@
         .tag-data       { background: rgba(14,165,233,0.15); border-color: rgba(14,165,233,0.35); color: #7dd3fc; }
         .tag-rust       { background: rgba(239,68,68,0.15);  border-color: rgba(239,68,68,0.35);  color: #fca5a5; }
 
+        /* ── fork + domain badges ───────────────────────────────────────── */
+        .meta-chip {
+            display:inline-flex; align-items:center; gap:4px;
+            padding:2px 7px; border-radius:5px;
+            font-size:10px; font-weight:600; letter-spacing:0.04em;
+            border:1px solid; white-space:nowrap;
+        }
+        .chip-domain { background:rgba(115,115,115,0.12); border-color:rgba(115,115,115,0.30); color:var(--text-muted); }
+        .chip-fork   { background:rgba(148,163,184,0.12); border-color:rgba(148,163,184,0.32); color:#94a3b8; }
+        .chip-mod    { background:rgba(34,197,94,0.14);   border-color:rgba(34,197,94,0.38);  color:#4ade80; }
+        .upstream-line { font-size:11px; line-height:1.5; }
+        .changes-line  { font-size:11px; line-height:1.55; font-style:italic; }
+
+
         /* ── Filter buttons ── */
         .filter-btn {
             background: transparent;
@@ -237,15 +251,15 @@
         { id: 'Multi-Agent',    label: 'Multi-Agent',          cls: 'tag-multiagent', priority: 1,
           match: t => /multi.?agent|agent.?swarm|crewai|langgraph|a2a|parallel.?agent|sub.?agent|specialized.?agent/.test(t) },
         { id: 'Agentic AI',     label: 'Agentic',              cls: 'tag-agentic',    priority: 1,
-          match: t => /\bagent(ic|s)?\b|autonomous.*ai|ai.*autonom|tool.?call|agentic|autonom.*research/.test(t) },
+          match: t => /\bagent(ic|s)?\b|autonomous.{0,24}ai|ai.{0,24}autonom|tool.?call|agentic|autonom.{0,24}research/.test(t) },
         { id: 'RAG',            label: 'RAG',                  cls: 'tag-rag',        priority: 1,
-          match: t => /\brag\b|retrieval.?augmented|faiss|vector.?store|semantic.*search|rag.?fusion|knowledge.*retrieval/.test(t) },
+          match: t => /\brag\b|retrieval.?augmented|faiss|vector.?store|semantic.{0,24}search|rag.?fusion|knowledge.{0,24}retrieval/.test(t) },
         { id: 'LLM',            label: 'LLM',                  cls: 'tag-llm',        priority: 1,
           match: t => /\bllm\b|\bgpt.?[234]?\b|openai|groq|ollama|gemini|llama|mistral|bedrock|text.?davinci|language.?model/.test(t) },
         { id: 'Generative AI',  label: 'Generative AI',        cls: 'tag-genai',      priority: 1,
-          match: t => /stable.?diffusion|dall.?e|vqgan|clip|diffusion.?model|esrgan|musicgen|generat.*image|generat.*art|generat.*animat/.test(t) },
+          match: t => /stable.?diffusion|dall.?e|vqgan|clip.?guided|vqgan.{0,3}clip|diffusion.?model|esrgan|musicgen|generative.?art|generat\w*\s+(image|animat)/.test(t) },
         { id: 'RL',             label: 'Reinforcement Learning', cls: 'tag-rl',       priority: 1,
-          match: t => /reinforcement.?learn|\bq.?learn|\brl\b|dqn|ppo|policy.*gradient|reward.*function/.test(t) },
+          match: t => /reinforcement.?learn|\bq.?learn|\brl\b|\bdqn\b|\bppo\b|policy.{0,24}gradient|reward.{0,24}function/.test(t) },
 
         // Tier 2 — AI/ML techniques
         { id: 'Deep Learning',  label: 'Deep Learning',        cls: 'tag-deeplearn',  priority: 2,
@@ -261,15 +275,15 @@
         { id: 'Automation',     label: 'Automation',           cls: 'tag-automation', priority: 3,
           match: t => /automat|selenium|pyautogui|web.?scrap|scraping|\bbot\b|scheduler|headless/.test(t) },
         { id: 'Research',       label: 'Research',             cls: 'tag-research',   priority: 3,
-          match: t => /research|academic|ieee|latex|arxiv|survey|literature|citation|scholarly|synthes.*report/.test(t) },
+          match: t => /research|academic|ieee|latex|arxiv|survey|literature|citation|scholarly|synthes.{0,24}report/.test(t) },
         { id: 'Audio',          label: 'Audio',                cls: 'tag-audio',      priority: 3,
           match: t => /musicgen|audio|speech.?to|text.?to.?speech|\btts\b|\bwav\b|lip.?sync|decibel|audio.?process/.test(t) },
         { id: 'Finance',        label: 'Finance',              cls: 'tag-finance',    priority: 3,
-          match: t => /fintech|invest|trading|forex|stock|market|portfolio|financial|ethereum|crypto|sec.?filing|quant/.test(t) },
+          match: t => /fintech|investing|investment|trading(?!.?card)|forex|\bstocks\b|stock.?market|portfolio.?track|financial|banking|ethereum|crypto|sec.?filing|unit.?economics|\bquant\b/.test(t) },
         { id: 'Game Dev',       label: 'Game Dev',             cls: 'tag-gamedev',    priority: 3,
-          match: t => /\bgame\b|pygame|godot|tetris|chess|mario|dino|cellular.?autom|conway|lenia|ant.*sim/.test(t) },
+          match: t => /\bgame\b|pygame|godot|tetris|chess|mario|dino|cellular.?autom|conway|lenia|ant.?colony|ant.?sim/.test(t) },
         { id: 'Web Dev',        label: 'Web Dev',              cls: 'tag-webdev',     priority: 3,
-          match: t => /next\.?js|streamlit|web.?app|frontend|dashboard|api.?server|node\.?js|express|fastapi|flask|react/.test(t) },
+          match: t => /next\.?js|streamlit|web.?app|frontend|dashboard|api.?server|node\.?js|express|fastapi|flask|\breact\b/.test(t) },
         { id: 'Data Science',   label: 'Data Science',         cls: 'tag-data',       priority: 3,
           match: t => /data.?sci|data.?analy|pandas|matplotlib|jupyter|visualization|time.?series/.test(t) },
         { id: 'Rust',           label: 'Rust',                 cls: 'tag-rust',       priority: 3,
@@ -309,39 +323,65 @@
     // CSV loader — fetches ./decp.csv and populates customData {repoName: desc}
     // Handles quoted fields so commas inside descriptions work correctly.
     // ─────────────────────────────────────────────────────────────────────────────
+    // Minimal RFC-4180 CSV parser: handles quoted fields, embedded commas,
+    // escaped double-quotes and quoted newlines.
+    function parseCSV(text) {
+        const rows = [];
+        let row = [], field = '', inQuotes = false;
+        for (let i = 0; i < text.length; i++) {
+            const c = text[i];
+            if (inQuotes) {
+                if (c === '"') {
+                    if (text[i + 1] === '"') { field += '"'; i++; }
+                    else inQuotes = false;
+                } else field += c;
+            } else if (c === '"') {
+                inQuotes = true;
+            } else if (c === ',') {
+                row.push(field); field = '';
+            } else if (c === '\n') {
+                row.push(field); field = '';
+                if (row.length > 1 || row[0] !== '') rows.push(row);
+                row = [];
+            } else if (c !== '\r') {
+                field += c;
+            }
+        }
+        row.push(field);
+        if (row.length > 1 || row[0] !== '') rows.push(row);
+        return rows;
+    }
+
     async function loadCustomData() {
         try {
             const res = await fetch('./decp.csv');
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
-            const text = await res.text();
-            const lines = text.trim().split('\n');
-            // Skip header row (Repo Name,Description)
-            for (let i = 1; i < lines.length; i++) {
-                const line = lines[i].trim();
-                if (!line) continue;
-                // Robust CSV parse: handle optional quoting on each field
-                let name, desc;
-                if (line.startsWith('"')) {
-                    // Quoted first field
-                    const m = line.match(/^"((?:[^"]|"")*)"\s*,\s*([\s\S]*)$/);
-                    if (!m) continue;
-                    name = m[1].replace(/""/g, '"');
-                    desc = m[2].startsWith('"')
-                        ? m[2].replace(/^"|"$/g, '').replace(/""/g, '"')
-                        : m[2];
-                } else {
-                    // Unquoted first field — split on first comma only
-                    const comma = line.indexOf(',');
-                    if (comma === -1) continue;
-                    name = line.slice(0, comma).trim();
-                    const rest = line.slice(comma + 1).trim();
-                    desc = rest.startsWith('"')
-                        ? rest.replace(/^"|"$/g, '').replace(/""/g, '"')
-                        : rest;
-                }
-                if (name && desc) customData[name] = desc;
+            const rows = parseCSV(await res.text());
+            if (!rows.length) throw new Error('empty CSV');
+            const header = rows[0].map(h => h.trim());
+            const col = name => header.indexOf(name);
+            const iName   = col('Repo Name'),  iDesc    = col('Description');
+            const iTopics = col('Topics'),     iTags    = col('Tags');
+            const iDomain = col('Domain'),     iType    = col('Type');
+            const iFork   = col('Forked From'),iChanges = col('My Changes');
+            const iLive   = col('Live URL');
+
+            for (let r = 1; r < rows.length; r++) {
+                const f = rows[r];
+                const name = (f[iName] || '').trim();
+                if (!name) continue;
+                customData[name] = {
+                    description: (f[iDesc]   || '').trim(),
+                    topics:      iTopics  > -1 ? (f[iTopics]  || '').trim() : '',
+                    techTags:    iTags    > -1 ? (f[iTags]     || '').trim() : '',
+                    domain:      iDomain  > -1 ? (f[iDomain]   || '').trim() : '',
+                    type:        iType    > -1 ? (f[iType]     || '').trim() : 'original',
+                    forkedFrom:  iFork    > -1 ? (f[iFork]     || '').trim() : '',
+                    changes:     iChanges > -1 ? (f[iChanges]  || '').trim() : '',
+                    liveUrl:     iLive    > -1 ? (f[iLive]     || '').trim() : ''
+                };
             }
-            console.log(`Loaded ${Object.keys(customData).length} descriptions from decp.csv`);
+            console.log(`Loaded ${Object.keys(customData).length} curated records from decp.csv`);
         } catch (e) {
             console.warn('Could not load decp.csv:', e.message);
         }
@@ -393,6 +433,8 @@
                 p.name.toLowerCase().includes(term) ||
                 p.description.toLowerCase().includes(term) ||
                 (p.language && p.language.toLowerCase().includes(term)) ||
+                (p.domain && p.domain.toLowerCase().includes(term)) ||
+                (p.forkedFrom && p.forkedFrom.toLowerCase().includes(term)) ||
                 p.tags.some(t => t.label.toLowerCase().includes(term) || t.id.toLowerCase().includes(term));
             const matchesFilter = !activeFilter || p.tags.some(t => t.id === activeFilter);
             return matchesSearch && matchesFilter;
@@ -418,14 +460,21 @@
             }
 
             allProjects = repos.map(repo => {
-                const desc = customData[repo.name] || repo.description || "No description provided.";
+                const rec  = customData[repo.name] || {};
+                const desc = rec.description || repo.description || "No description provided.";
                 return {
                     id: repo.id,
                     name: repo.name,
                     description: desc,
                     url: repo.html_url,
                     language: repo.language,
-                    tags: extractTags(repo.name, desc, repo.language),
+                    // Tagger reads curated topics + tech tags too, not just the blurb
+                    tags: extractTags(repo.name, `${desc} ${rec.topics || ''} ${rec.techTags || ''} ${rec.domain || ''}`, repo.language),
+                    domain: rec.domain || '',
+                    type: rec.type || (repo.fork ? 'fork' : 'original'),
+                    forkedFrom: rec.forkedFrom || '',
+                    changes: rec.changes || '',
+                    liveUrl: rec.liveUrl || repo.homepage || '',
                     stars: repo.stargazers_count,
                     updated_at: new Date(repo.pushed_at || repo.updated_at)
                 };
@@ -434,24 +483,27 @@
             allProjects.sort((a, b) => b.updated_at - a.updated_at);
 
             const apiRepoNames = new Set(allProjects.map(p => p.name));
-            for (const [name, desc] of Object.entries(customData)) {
-                if (!apiRepoNames.has(name)) {
-                    allProjects.push({
-                        id: name, name, description: desc,
-                        url: `https://github.com/${GITHUB_USERNAME}/${name}`,
-                        language: null,
-                        tags: extractTags(name, desc, null),
-                        stars: 0, updated_at: new Date(0)
-                    });
-                }
+            for (const [name, rec] of Object.entries(customData)) {
+                if (apiRepoNames.has(name)) continue;
+                allProjects.push({
+                    id: name, name,
+                    description: rec.description,
+                    url: `https://github.com/${GITHUB_USERNAME}/${name}`,
+                    language: null,
+                    tags: extractTags(name, `${rec.description} ${rec.topics} ${rec.techTags} ${rec.domain}`, null),
+                    domain: rec.domain, type: rec.type,
+                    forkedFrom: rec.forkedFrom, changes: rec.changes, liveUrl: rec.liveUrl,
+                    stars: 0, updated_at: new Date(0)
+                });
             }
 
             // Stats
-            const agenticCount = allProjects.filter(p => p.tags.some(t => t.id === 'Agentic AI' || t.id === 'Multi-Agent')).length;
-            const llmCount = allProjects.filter(p => p.tags.some(t => t.id === 'LLM')).length;
+            const originals = allProjects.filter(p => p.type === 'original').length;
+            const forks     = allProjects.filter(p => p.type.startsWith('fork')).length;
+            const modForks  = allProjects.filter(p => p.type === 'fork (modified)').length;
             document.getElementById('statTotal').textContent = `${allProjects.length} repositories`;
-            document.getElementById('statAgentic').textContent = `${agenticCount} agentic`;
-            document.getElementById('statLLM').textContent = `${llmCount} LLM`;
+            document.getElementById('statAgentic').textContent = `${originals} built from scratch`;
+            document.getElementById('statLLM').textContent = `${forks} forks · ${modForks} with my changes`;
             document.getElementById('statsBar').classList.remove('hidden');
 
             document.getElementById('loading').classList.add('hidden');
@@ -474,6 +526,10 @@
     // ─────────────────────────────────────────────────────────────────────────────
     // Render
     // ─────────────────────────────────────────────────────────────────────────────
+    const esc = v => String(v == null ? '' : v)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+
     function renderProjects(projects) {
         const grid = document.getElementById('projectGrid');
         const noResults = document.getElementById('noResults');
@@ -494,24 +550,43 @@
             card.target = '_blank';
             card.className = 'project-card flex flex-col justify-between bg-neutral-900/30 border border-neutral-800 rounded-xl p-6 text-left overflow-hidden';
 
-            const tagsHTML = project.tags.length > 0
+            const isFork = project.type && project.type.startsWith('fork');
+            const isMod  = project.type === 'fork (modified)';
+
+            const chips = [];
+            if (isMod)       chips.push(`<span class="meta-chip chip-mod">★ MODIFIED FORK</span>`);
+            else if (isFork) chips.push(`<span class="meta-chip chip-fork">⑂ FORK</span>`);
+            if (project.domain) chips.push(`<span class="meta-chip chip-domain">${esc(project.domain)}</span>`);
+
+            const tagsHTML = (project.tags.length || chips.length)
                 ? `<div class="flex flex-wrap gap-1.5 mt-auto mb-1">
+                    ${chips.join('')}
                     ${project.tags.map(t => `<span style="display:inline-flex;align-items:center;gap:4px;padding:2px 7px;border-radius:5px;font-size:10px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;border:1px solid;white-space:nowrap;" class="${t.cls}">${ICONS[t.id] || ''}${t.label}</span>`).join('')}
                    </div>`
                 : '<div class="mt-auto"></div>';
 
+            const upstreamHTML = project.forkedFrom
+                ? `<p class="upstream-line mb-2" style="color:var(--text-faint);">forked from ${esc(project.forkedFrom)}</p>`
+                : '';
+            const changesHTML = (isMod && project.changes)
+                ? `<p class="changes-line mb-3" style="color:var(--text-subtle);">${esc(project.changes)}</p>`
+                : '';
+
             card.innerHTML = `
                 <div class="flex flex-col flex-grow min-w-0">
                     <div class="flex justify-between items-start mb-3 w-full">
-                        <h3 class="text-base font-medium tracking-tight truncate pr-3" style="color:var(--text);" title="${project.name}">${project.name}</h3>
+                        <h3 class="text-base font-medium tracking-tight truncate pr-3" style="color:var(--text);" title="${esc(project.name)}">${esc(project.name)}</h3>
                         <svg class="w-4 h-4 shrink-0 mt-0.5" style="color:var(--text-faint);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                     </div>
-                    <p class="text-sm leading-relaxed line-clamp-3 mb-4" style="color:var(--text-muted);">${project.description}</p>
+                    <p class="text-sm leading-relaxed line-clamp-4 mb-3" style="color:var(--text-muted);">${esc(project.description)}</p>
+                    ${upstreamHTML}
+                    ${changesHTML}
                     ${tagsHTML}
                 </div>
                 <div class="mt-4 pt-4 flex items-center justify-between text-xs font-medium shrink-0" style="border-top:1px solid var(--border);color:var(--text-subtle);">
                     <div class="flex items-center gap-2 truncate pr-2">
-                        ${project.language ? `<span style="width:10px;height:10px;border-radius:50%;display:inline-block;flex-shrink:0;background:${dotColor};"></span><span class="truncate">${project.language}</span>` : ''}
+                        ${project.language ? `<span style="width:10px;height:10px;border-radius:50%;display:inline-block;flex-shrink:0;background:${dotColor};"></span><span class="truncate">${esc(project.language)}</span>` : ''}
+                        ${project.liveUrl ? `<span class="shrink-0" title="has a live site" style="opacity:0.8;">● live</span>` : ''}
                     </div>
                     ${project.stars > 0 ? `<div class="flex items-center gap-1 shrink-0"><svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>${project.stars}</div>` : ''}
                 </div>
